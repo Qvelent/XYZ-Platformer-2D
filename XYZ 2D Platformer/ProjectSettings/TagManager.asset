@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
+  - Enemy
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -13,14 +16,14 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Iteractables
+  - Trash
+  - Player
+  - Wall
+  - Enemy
+  - Collectablas
+  - Checkers
   - 
   - 
   - 
@@ -40,4 +43,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 238977211
+    locked: 0
+  - name: Clouds
+    uniqueID: 2889610763
+    locked: 0
+  - name: BackPalms
+    uniqueID: 1227345187
+    locked: 0
+  - name: Setting
+    uniqueID: 2348664471
+    locked: 0
+  - name: Ground
+    uniqueID: 1939630359
+    locked: 0
+  - name: Player
+    uniqueID: 216331095
+    locked: 0
+  - name: FrontPalms
+    uniqueID: 3918982779
     locked: 0
