@@ -1,5 +1,4 @@
 using PlayerOption.Scripts.Components.ColliderBased;
-using PlayerOption.Scripts.Components.GoBased;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Utils;
