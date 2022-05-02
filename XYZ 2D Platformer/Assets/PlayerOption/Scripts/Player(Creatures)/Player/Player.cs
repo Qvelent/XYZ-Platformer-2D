@@ -32,9 +32,9 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private bool _isOnWall;
       
       private GameSession _session;
-      private PlayerInput _input;
+      private HealthComponent _addHeal;
       private float _defaultGravityScale;
-      
+
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
       private int SwordCount => _session.Data.Inventory.Count("Sword"); // property c# изучить
       private int PotionCount => _session.Data.Inventory.Count("Potion(100)"); // property c# изучить
@@ -214,6 +214,12 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          {
             var numPotionToDispose = Mathf.Min(PotionCount, 1);
             _session.Data.Inventory.Remove("Potion(100)", numPotionToDispose);
+            
+            var healthComponent = GetComponent<HealthComponent>();
+            if (healthComponent != null)
+            {
+               healthComponent.ModifyHealth(100);
+            }
          }
       }
    }
