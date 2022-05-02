@@ -19,9 +19,15 @@ namespace PlayerOption.Scripts.Model.Definitions
 
             return default;
         }
+#if UNITY_EDITOR
+            public ItemDef[] ItemsForEditor => _items;
+#endif
     }
-    
-    [Serializable]
+
+
+
+
+[Serializable]
     public struct ItemDef
     {
         [SerializeField] private string _id; // constructor c# изучить

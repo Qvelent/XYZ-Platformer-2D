@@ -1,3 +1,4 @@
+using System;
 using PlayerOption.Scripts.Components.ColliderBased;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Model;
@@ -49,9 +50,21 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          _session = FindObjectOfType<GameSession>();
          var health = GetComponent<HealthComponent>();
          _session.Data.Inventory.OnChanged += OnInventoryChanged;
+         _session.Data.Inventory.OnChanged += AnotherChanged;
          
          health.SetHealth(_session.Data.Hp);
          UpdatePlayerWeapon();
+      }
+
+      private void OnDestroy()
+      {
+         _session.Data.Inventory.OnChanged -= OnInventoryChanged;
+         _session.Data.Inventory.OnChanged -= AnotherChanged;
+      }
+
+      private void AnotherChanged(string id, int value)
+      {
+         Debug.Log($"Inventory changed: {id}: {value}");
       }
 
       private void OnInventoryChanged(string id, int value)
