@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 2896154402744095199}
   - component: {fileID: 6944963731545199923}
   - component: {fileID: 3511598970156396014}
-  - component: {fileID: 8267487701585980335}
-  - component: {fileID: 8168842517901146817}
+  - component: {fileID: 5506338068784111514}
   m_Layer: 0
   m_Name: StuckedSword
   m_TagString: Untagged
@@ -182,8 +181,8 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8267487701585980335}
-        m_MethodName: ArmPlayer
+      - m_Target: {fileID: 5506338068784111514}
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -204,18 +203,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8168842517901146817}
-        m_MethodName: PickSwords
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8267487701585980335
+--- !u!114 &5506338068784111514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,19 +212,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1723260027875591102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a88482cbca37f443add0288ef35ee12, type: 3}
+  m_Script: {fileID: 11500000, guid: d5c8c7941b7e4f73bdb1fea29153ca45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8168842517901146817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723260027875591102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499eb3457efb41cba5ffc4519d717411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _swords: 1
+  _id: Sword
+  _count: 1

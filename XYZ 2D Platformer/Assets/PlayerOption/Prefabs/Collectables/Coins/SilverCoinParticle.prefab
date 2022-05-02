@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8519319941693350702}
   - component: {fileID: 8519319941693350700}
   - component: {fileID: 8519319941693350696}
-  - component: {fileID: 8519319941693350697}
   - component: {fileID: -6092321164833016438}
   - component: {fileID: 2135556340257945406}
+  - component: {fileID: 7935065049485597177}
   m_Layer: 14
   m_Name: SilverCoinParticle
   m_TagString: Untagged
@@ -165,19 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 8519319941693350699}
---- !u!114 &8519319941693350697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8519319941693350699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7590ca30afdfad41be2c50ac3b279f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coins: 1
 --- !u!50 &-6092321164833016438
 Rigidbody2D:
   serializedVersion: 4
@@ -226,8 +213,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8519319941693350697}
-        m_MethodName: PickCoins
+      - m_Target: {fileID: 7935065049485597177}
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -248,3 +235,17 @@ MonoBehaviour:
           m_StringArgument: destoySilverCoin
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7935065049485597177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519319941693350699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c8c7941b7e4f73bdb1fea29153ca45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Coin
+  _count: 1

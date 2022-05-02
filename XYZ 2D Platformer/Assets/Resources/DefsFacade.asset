@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644af2037d9c40a9a0a7e8f744172a1f, type: 3}
-  m_Name: InventoryItems
+  m_Script: {fileID: 11500000, guid: 3feb6902b3714459b083a1557a4263fb, type: 3}
+  m_Name: DefsFacade
   m_EditorClassIdentifier: 
-  _items:
-  - _id: Coin
-  - _id: Sword
+  _items: {fileID: 11400000, guid: 6f7dc034ffff5054a9db1ea7519d7ff5, type: 2}

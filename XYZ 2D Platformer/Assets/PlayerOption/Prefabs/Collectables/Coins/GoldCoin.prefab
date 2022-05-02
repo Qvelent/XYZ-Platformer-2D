@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6270903477257656436}
   - component: {fileID: 6270903477257656433}
   - component: {fileID: 6270903477257656437}
-  - component: {fileID: 6270903477257656438}
   - component: {fileID: 6270903477257657226}
   - component: {fileID: 2876797836834743373}
   - component: {fileID: 85525010309930351}
+  - component: {fileID: 3553014102035997892}
   m_Layer: 14
   m_Name: GoldCoin
   m_TagString: Coin
@@ -183,8 +183,8 @@ MonoBehaviour:
           m_StringArgument: destoyCoin
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6270903477257656438}
-        m_MethodName: PickCoins
+      - m_Target: {fileID: 3553014102035997892}
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -194,19 +194,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6270903477257656438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6270903477257657224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7590ca30afdfad41be2c50ac3b279f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coins: 10
 --- !u!114 &6270903477257657226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,3 +243,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3553014102035997892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270903477257657224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c8c7941b7e4f73bdb1fea29153ca45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Coin
+  _count: 10

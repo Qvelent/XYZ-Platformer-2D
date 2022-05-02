@@ -7,10 +7,10 @@ namespace PlayerOption.Scripts.Model.Data
     public class PlayerData
     {
         [SerializeField] private InventoryData _inventory;
-        public int Coins;
+       
         public int Hp;
-        public bool IsArmed;
-        public int Swords;
+
+        public InventoryData Inventory => _inventory;
 
         public PlayerData Clone()
         {

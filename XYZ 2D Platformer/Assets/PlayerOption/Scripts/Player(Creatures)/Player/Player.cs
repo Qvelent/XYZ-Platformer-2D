@@ -32,6 +32,10 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       
       private GameSession _session;
       private float _defaultGravityScale;
+      
+      private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
+      private int SwordCount => _session.Data.Inventory.Count("Sword"); // property c# изучить
+
 
       protected override void Awake()
       {
@@ -44,11 +48,20 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       {
          _session = FindObjectOfType<GameSession>();
          var health = GetComponent<HealthComponent>();
+         _session.Data.Inventory.OnChanged += OnInventoryChanged;
          
          health.SetHealth(_session.Data.Hp);
          UpdatePlayerWeapon();
       }
-      
+
+      private void OnInventoryChanged(string id, int value)
+      {
+         if (id == "Sword")
+         {
+            UpdatePlayerWeapon();
+         }
+      }
+
       public void OnHealthChange(int currentHealth)
       {
          _session.Data.Hp = currentHealth;
@@ -99,24 +112,16 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
         return base.CalculateJumpVelocity(yVelocity);
       }
-      
-      public void AddCoins(int coins)
-      {
-         _session.Data.Coins += coins;
-         Debug.Log("Collect coins: " + _session.Data.Coins); // Можно написать $" {coins} Collect coins: {_coins}"
-      }
 
-      public void AddSwords(int swords)
+      public void AddInInventory(string id, int value)
       {
-         _session.Data.Swords += swords;
-         Debug.Log("Collect swords: " + _session.Data.Swords);
+         _session.Data.Inventory.Add(id, value);
       }
 
       public override void TakeDamage()
       {
          base.TakeDamage();
-         
-         if (_session.Data.Coins > 0)
+         if (CoinsCount > 0)
          {
             SpawnCoins();
          }
@@ -124,10 +129,9 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       private void SpawnCoins()
       {
-         var numCoinsToDispose = Mathf.Min(_session.Data.Coins, 5);
-         _session.Data.Coins -= numCoinsToDispose;
-         Debug.Log("Falls coins: " + _session.Data.Coins);
-         
+         var numCoinsToDispose = Mathf.Min(CoinsCount, 5);
+         _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
+
          var burst = _hitParticles.emission.GetBurst(0);
          burst.count = numCoinsToDispose;
          _hitParticles.emission.SetBurst(0, burst);
@@ -156,40 +160,32 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          _particles.Spawn("Attack");
       }
 
+      
       public override void Attack()
       {
-         if (!_session.Data.IsArmed) return;
+         if (SwordCount <= 0) return;
          
          base.Attack();
-      }
-      
-      public void ArmPlayer()
-      {
-         _session.Data.IsArmed = true;
-         UpdatePlayerWeapon();
-         Animator.runtimeAnimatorController = _armed;
       }
 
       private void UpdatePlayerWeapon()
       {
-         Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
+         Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _disarmed;
       }
-
+      
       public void OnThrow()
       {
-         if (_session.Data.Swords > 1)
+         if (SwordCount > 1)
          {
-            var numSwordsToDispose = Mathf.Min(_session.Data.Swords, 1);
-            _session.Data.Swords -= numSwordsToDispose;
-            Debug.Log("Falls sword: " + _session.Data.Swords);
-
+            var numSwordsToDispose = Mathf.Min(SwordCount, 1);
+            _session.Data.Inventory.Remove("Sword", numSwordsToDispose);
             _particles.Spawn("Throw");
          }
       }
 
       public void Throw()
       {
-         if (_throwCD.IsReady && _session.Data.Swords > 1)
+         if (_throwCD.IsReady && SwordCount > 1)
          {
             Animator.SetTrigger(ThrowKey);
             _throwCD.Reset();

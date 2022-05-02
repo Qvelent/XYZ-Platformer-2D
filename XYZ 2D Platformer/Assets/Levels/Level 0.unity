@@ -795,18 +795,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!114 &238253706 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2188198182945454554, guid: 938f9bd69785255468dcc7751395ae71,
-    type: 3}
-  m_PrefabInstance: {fileID: 1496366310}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499eb3457efb41cba5ffc4519d717411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &297542799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,18 +1321,6 @@ Transform:
   m_Father: {fileID: 297542800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &711809035 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2188198182945454554, guid: 938f9bd69785255468dcc7751395ae71,
-    type: 3}
-  m_PrefabInstance: {fileID: 2032102508}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499eb3457efb41cba5ffc4519d717411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &723405257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,18 +2006,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1365019799}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1387281966 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2188198182945454554, guid: 938f9bd69785255468dcc7751395ae71,
-    type: 3}
-  m_PrefabInstance: {fileID: 1735580717}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499eb3457efb41cba5ffc4519d717411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1422353094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2213,7 +2177,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 238253706}
+      objectReference: {fileID: 0}
     - target: {fileID: 6523576287732844129, guid: 938f9bd69785255468dcc7751395ae71,
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -2453,10 +2417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    Coins: 0
+    _inventory:
+      _inventory: []
     Hp: 10
-    IsArmed: 0
-    Swords: 0
 --- !u!4 &1731718336 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9196220578023210807, guid: 415e7cc826b96df4b84ae0b0eea6373b,
@@ -2588,7 +2551,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1387281966}
+      objectReference: {fileID: 0}
     - target: {fileID: 6523576287732844129, guid: 938f9bd69785255468dcc7751395ae71,
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -2766,7 +2729,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 711809035}
+      objectReference: {fileID: 0}
     - target: {fileID: 6523576287732844129, guid: 938f9bd69785255468dcc7751395ae71,
         type: 3}
       propertyPath: _action.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -3206,7 +3169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879499303666681573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.120704, y: 3.49, z: -6.0075493}
+  m_LocalPosition: {x: -12.110112, y: 3.49, z: -6.0075493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3879499303774177365}
