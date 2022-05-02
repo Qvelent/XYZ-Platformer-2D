@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using PlayerOption.Scripts.Model.Data;
 using UnityEngine;
 
 namespace PlayerOption.Scripts.Model
