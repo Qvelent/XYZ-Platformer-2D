@@ -32,10 +32,12 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private bool _isOnWall;
       
       private GameSession _session;
+      private PlayerInput _input;
       private float _defaultGravityScale;
       
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
       private int SwordCount => _session.Data.Inventory.Count("Sword"); // property c# изучить
+      private int PotionCount => _session.Data.Inventory.Count("Potion(100)"); // property c# изучить
 
 
       protected override void Awake()
@@ -202,6 +204,16 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          {
             Animator.SetTrigger(ThrowKey);
             _throwCD.Reset();
+         }
+      }
+
+      public void OnUsePotion()
+      {
+
+         if (PotionCount > 0)
+         {
+            var numPotionToDispose = Mathf.Min(PotionCount, 1);
+            _session.Data.Inventory.Remove("Potion(100)", numPotionToDispose);
          }
       }
    }

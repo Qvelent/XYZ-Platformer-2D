@@ -1,3 +1,4 @@
+using PlayerOption.Scripts.Components.Health;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,8 +6,9 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        [SerializeField] private Player_Creatures_.Player.Player _player;
-    
+        [SerializeField] private Player _player;
+        private ModifyHealthComponent _hpDelta;
+
         public void OnMovementInput(InputAction.CallbackContext context)
         {
             var direction = context.ReadValue<Vector2>();
@@ -36,6 +38,11 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
                 _player.Throw();
             }
             
+        }
+
+        public void OnUsePotionInput(InputAction.CallbackContext context)
+        {
+            _player.OnUsePotion();
         }
     }
 }
