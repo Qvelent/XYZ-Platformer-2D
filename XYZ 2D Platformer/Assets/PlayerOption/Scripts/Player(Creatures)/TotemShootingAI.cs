@@ -12,7 +12,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
         [SerializeField] private SpawnComponent _rangeAttack;
 
         [Header("Vision")]
-        [SerializeField] private LayerCheck _vision;
+        [SerializeField] private ColliderCheck _vision;
         
         private static readonly int Attack = Animator.StringToHash("attack");
         

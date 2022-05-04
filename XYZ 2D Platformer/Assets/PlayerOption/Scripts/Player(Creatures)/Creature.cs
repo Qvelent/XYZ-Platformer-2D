@@ -14,7 +14,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
         [SerializeField] private float _damageVelocity;
 
         [SerializeField] protected LayerMask _graundLayer;
-        [SerializeField] private LayerCheck _groundCheck;
+        [SerializeField] private ColliderCheck _groundCheck;
         [SerializeField] private CheckCircleOverLap _attackRange;
 
         [Header("Particles")] 

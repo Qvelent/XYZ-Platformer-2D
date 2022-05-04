@@ -11,7 +11,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
    public class Player : Creature
    {
       [Header("Player Check")]
-      [SerializeField] private LayerCheck _wallCheck;
+      [SerializeField] private ColliderCheck _wallCheck;
       [SerializeField] private CheckCircleOverLap _interactionCheck;
       
             

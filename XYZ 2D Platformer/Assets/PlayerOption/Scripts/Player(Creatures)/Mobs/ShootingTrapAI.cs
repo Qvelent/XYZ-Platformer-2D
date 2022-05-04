@@ -12,12 +12,12 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         [Header("Melee")]
         [SerializeField] private CoolDown _meleeCoolDown;
         [SerializeField] private CheckCircleOverLap _meleeAttack;
-        [SerializeField] private LayerCheck _meleeCanAttack;
+        [SerializeField] private ColliderCheck _meleeCanAttack;
         [Header("Range")]
         [SerializeField] private CoolDown _rangeCoolDown;
         [SerializeField] private SpawnComponent _rangeAttack;
         [Header("Vision")]
-        [SerializeField] private LayerCheck _vision;
+        [SerializeField] private ColliderCheck _vision;
         
         private static readonly int Melee = Animator.StringToHash("melee");
         private static readonly int Range = Animator.StringToHash("range");

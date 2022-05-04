@@ -7,8 +7,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs.Patrolling
     public class PlatformPatrol : Patrol
     {
         [SerializeField] private LayerCheck _groundCheck;
-        [SerializeField] private int _direction;
         [SerializeField] private Creature _creature;
+        [SerializeField] private int _direction;
         
         public override IEnumerator DoPatrol()
         {
