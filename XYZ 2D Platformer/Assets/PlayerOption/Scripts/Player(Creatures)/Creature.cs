@@ -25,7 +25,6 @@ namespace PlayerOption.Scripts.Player_Creatures_
         protected Animator Animator;
         protected bool IsGrounded;
         private bool _isJumpimg;
-        private CapsuleCollider2D _capsuleCollider2D; // --------------------------------------
 
 
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
@@ -38,7 +37,6 @@ namespace PlayerOption.Scripts.Player_Creatures_
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
-            _capsuleCollider2D = GetComponent<CapsuleCollider2D>(); // --------------------------------------
         }
         
         public void SetDirection(Vector2 direction)
@@ -63,13 +61,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
          
             Flip(Direction);
         }
-
-        public void ChangeColliderOnDie()                               // --------------------------------------
-        {
-            _capsuleCollider2D.direction = CapsuleDirection2D.Horizontal;
-            _capsuleCollider2D.size = new Vector2(0.65f, 0.35f);
-        }
-
+        
         protected  virtual float CalculateYVelocity()
         {
             var yVelocity = Rigidbody.velocity.y;
@@ -133,7 +125,6 @@ namespace PlayerOption.Scripts.Player_Creatures_
         {
             _attackRange.Check();
         }
-        
     }
 }
 

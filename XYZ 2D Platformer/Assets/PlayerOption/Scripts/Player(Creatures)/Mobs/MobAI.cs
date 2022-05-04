@@ -122,26 +122,17 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
             
             _current = StartCoroutine(coroutine);
         }
-
-        private void DisableChilds() // --------------------------------------
-        {
-            GameObject.Find("Vision").gameObject.SetActive(false);
-            gameObject.layer = LayerMask.NameToLayer("Ground");
-        }
-
+        
         public void OnDie()
         {
             
             _isDead = true;
             _animator.SetBool(IsDieKey, true);
             
-            DisableChilds();
-            _creature.ChangeColliderOnDie(); 
             _creature.SetDirection(Vector2.zero);
             if (_current != null)
             {
                 StopCoroutine(_current);
-                Debug.Log("Шарки кричит: Тысяча чертей! Я УМЕР!");
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace PlayerOption.Scripts.Player_Creatures_.Mobs.Patrolling
