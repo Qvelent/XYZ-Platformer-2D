@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 7545276519209900434}
-  _prefab: {fileID: 5207535459923821744, guid: bb345554f50b7114e8fc473afdb0ec73, type: 3}
+  _prefab: {fileID: 5207535459923821744, guid: 61ec10348c7ece949a3a238577288133, type: 3}
   _invertXScale: 0
 --- !u!1 &7545276520216671327
 GameObject:
@@ -96,6 +96,8 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 2048
+  _tags:
+  - Player
   _onOverlap:
     m_PersistentCalls:
       m_Calls:
@@ -110,8 +112,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _tags:
-  - Player
 --- !u!114 &7545276520216671323
 MonoBehaviour:
   m_ObjectHideFlags: 0
