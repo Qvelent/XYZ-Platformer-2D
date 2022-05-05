@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using PlayerOption.Scripts.Components.ColliderBased;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Model;
@@ -14,9 +15,13 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       [SerializeField] private ColliderCheck _wallCheck;
       [SerializeField] private CheckCircleOverLap _interactionCheck;
       
-            
       [SerializeField] private float _slamDownVelocity;
       [SerializeField] private CoolDown _throwCD;
+
+      [Header("Super Throw")] 
+      [SerializeField] private CoolDown _superThrowCD;
+      [SerializeField] private int _superThrowParticles;
+      [SerializeField] private float _superThrowDelay;
 
       [Header("(Dis)Armed")]
       [SerializeField] private AnimatorController _armed;
@@ -30,6 +35,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       
       private bool _isDoubleJump;
       private bool _isOnWall;
+      private bool _isSuperThrow;
       
       private GameSession _session;
       private HealthComponent _addHeal;
@@ -187,26 +193,56 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       {
          Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _disarmed;
       }
-      
+
       public void OnThrow()
       {
-         if (SwordCount > 1)
+         if (_isSuperThrow)
          {
-            var numSwordsToDispose = Mathf.Min(SwordCount, 1);
-            _session.Data.Inventory.Remove("Sword", numSwordsToDispose);
-            _particles.Spawn("Throw");
+            var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+            StartCoroutine(DoSuperThrow(numThrows));
          }
+         else
+         {
+            ThrowAndRemoveFromInventory();
+         }
+
+         _isSuperThrow = false;
       }
 
-      public void Throw()
+      private IEnumerator DoSuperThrow(int numThrows)
       {
-         if (_throwCD.IsReady && SwordCount > 1)
+         for (int i = 0; i < numThrows; i++)
          {
-            Animator.SetTrigger(ThrowKey);
-            _throwCD.Reset();
+            ThrowAndRemoveFromInventory();
+            yield return new WaitForSeconds(_superThrowDelay);
          }
       }
 
+      private void ThrowAndRemoveFromInventory()
+      {
+         _particles.Spawn("Throw");
+         _session.Data.Inventory.Remove("Sword", 1);
+      }
+
+      public void StartThrowing()
+      {
+         _superThrowCD.Reset();
+      }
+
+      public void StopThrowing()
+      {
+         if(!_throwCD.IsReady || SwordCount <= 1) return;
+
+         if (_superThrowCD.IsReady) _isSuperThrow = true;
+         
+         _throwCD.Reset();
+         
+         if (SwordCount <= 1) return;
+         
+         Animator.SetTrigger(ThrowKey);
+         
+      }
+      
       public void OnUsePotion()
       {
 

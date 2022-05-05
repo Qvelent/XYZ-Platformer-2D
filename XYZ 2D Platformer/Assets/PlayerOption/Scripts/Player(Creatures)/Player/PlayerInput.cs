@@ -33,11 +33,15 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
         public void OnThrowInput(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.started)
             {
-                _player.Throw();
+                _player.StartThrowing();
             }
             
+            if (context.canceled)
+            {
+                _player.StopThrowing();
+            }
         }
 
         public void OnUsePotionInput(InputAction.CallbackContext context)
