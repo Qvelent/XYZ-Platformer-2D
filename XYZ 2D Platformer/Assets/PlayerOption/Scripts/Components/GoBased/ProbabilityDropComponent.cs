@@ -59,5 +59,10 @@ namespace PlayerOption.Scripts.Components.GoBased
         public class DropEvent : UnityEvent<GameObject[]>
         {
         }
+
+        public void SetCount(int count)
+        {
+            _count = count;
+        }
     }
 }

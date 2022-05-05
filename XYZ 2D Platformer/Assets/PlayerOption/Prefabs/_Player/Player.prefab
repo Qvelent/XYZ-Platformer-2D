@@ -1,5 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1639623963269009695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4384606636906998444}
+  - component: {fileID: 7934254691176513711}
+  - component: {fileID: 6856167789353368837}
+  m_Layer: 0
+  m_Name: HitDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4384606636906998444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639623963269009695}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.712, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6108174305556305480}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7934254691176513711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639623963269009695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b0d27ba3c043c2a67e1ab845d0fa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 10
+  _drop:
+  - Drop: {fileID: 8519319941693350699, guid: 23eb5c57cde2d2f47b767b92d3498a1f, type: 3}
+    Probability: 100
+  _onDropCalculated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6856167789353368837}
+        m_MethodName: StartDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _spawnOnEnable: 1
+--- !u!114 &6856167789353368837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639623963269009695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c39f2535e1201b4f8e26dde2f70a471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sectorAngle: 220
+  _sectorRotation: 0
+  _waitTime: 0.1
+  _speed: 3
 --- !u!1 &2113951290025047292
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,7 +126,9 @@ MonoBehaviour:
   _radius: 0.3
   _mask:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 14135
+  _tags:
+  - Enemy
   _onOverlap:
     m_PersistentCalls:
       m_Calls:
@@ -62,8 +143,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _tags:
-  - Enemy
 --- !u!114 &5835555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +204,8 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 512
+  _tags:
+  - Interactable
   _onOverlap:
     m_PersistentCalls:
       m_Calls:
@@ -139,8 +220,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _tags:
-  - Interactable
 --- !u!114 &5420999626402653795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +417,7 @@ GameObject:
   - component: {fileID: 6108174305556305487}
   - component: {fileID: 6616575658852290672}
   - component: {fileID: 7328438779001454940}
+  - component: {fileID: 1687810098}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -366,6 +446,7 @@ Transform:
   - {fileID: 6108174305646824295}
   - {fileID: 8820522213241175979}
   - {fileID: 2215830719681317106}
+  - {fileID: 4384606636906998444}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -483,9 +564,13 @@ MonoBehaviour:
   _slamDownVelocity: 10
   _throwCD:
     _value: 1
+  _superThrowCD:
+    _value: 1
+  _superThrowParticles: 3
+  _superThrowDelay: 0.2
   _armed: {fileID: 9100000, guid: 1088cf9eeec81cd4ba74de3212ea4f95, type: 2}
   _disarmed: {fileID: 9100000, guid: e69156dd8a89dfe4ca1dadb9e39ca4d4, type: 2}
-  _hitParticles: {fileID: 6108174305646824294}
+  _hitDrop: {fileID: 7934254691176513711}
 --- !u!114 &6108174305556305482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,6 +670,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 04c717d7-7424-4403-ad40-ee6aebb56f5a
     m_ActionName: Player/Throw[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6108174305556305482}
+        m_MethodName: OnUsePotionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 948b34db-d626-424e-819d-4f2bfb033ede
+    m_ActionName: Player/UsePotion[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -702,6 +802,28 @@ MonoBehaviour:
     Component: {fileID: 6410074648496706832}
   - Id: Throw
     Component: {fileID: 3243668665199456801}
+--- !u!114 &1687810098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108174305556305478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3352558a26466e8b7afc606bf191e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _required:
+  - Id: Potion(100)
+    Value: 1
+  _removeAfterUse: 1
+  _onSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  _onFail:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6108174305646824292
 GameObject:
   m_ObjectHideFlags: 0

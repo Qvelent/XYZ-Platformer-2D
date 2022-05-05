@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using PlayerOption.Scripts.Components.ColliderBased;
+using PlayerOption.Scripts.Components.GoBased;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Utils;
@@ -27,8 +27,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       [SerializeField] private AnimatorController _armed;
       [SerializeField] private AnimatorController _disarmed;
       
-      [Space] [Header("Particles")] [SerializeField]
-      private ParticleSystem _hitParticles;
+      [SerializeField] private ProbabilityDropComponent _hitDrop;
       
       private static readonly int ThrowKey = Animator.StringToHash("throw");
       private static readonly int IsOnWall = Animator.StringToHash("is-on-wall");
@@ -153,12 +152,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          var numCoinsToDispose = Mathf.Min(CoinsCount, 5);
          _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
 
-         var burst = _hitParticles.emission.GetBurst(0);
-         burst.count = numCoinsToDispose;
-         _hitParticles.emission.SetBurst(0, burst);
-         
-         _hitParticles.gameObject.SetActive(true);
-         _hitParticles.Play();
+         _hitDrop.SetCount(numCoinsToDispose);
+         _hitDrop.CalculateDrop();
       }
 
       public void Interact()
