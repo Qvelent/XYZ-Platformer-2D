@@ -49,7 +49,12 @@ namespace PlayerOption.Scripts.Components.Health
         {
             _health = health;
         }
-        
+
+        private void OnDestroy()
+        {
+            _onDie.RemoveAllListeners();
+        }
+
         [Serializable]
         public class HealthChangeEvent : UnityEvent<int>
         {
