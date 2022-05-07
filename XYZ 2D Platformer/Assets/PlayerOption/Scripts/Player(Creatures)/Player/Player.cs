@@ -37,7 +37,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private bool _isSuperThrow;
       
       private GameSession _session;
-      private HealthComponent _addHeal;
+      private HealthComponent _health;
       private float _defaultGravityScale;
 
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
@@ -55,11 +55,11 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private void Start()
       {
          _session = FindObjectOfType<GameSession>();
-         var health = GetComponent<HealthComponent>();
+         _health = GetComponent<HealthComponent>();
          _session.Data.Inventory.OnChanged += OnInventoryChanged;
          _session.Data.Inventory.OnChanged += AnotherChanged;
          
-         health.SetHealth(_session.Data.Hp);
+         _health.SetHealth(_session.Data.Hp);
          UpdatePlayerWeapon();
       }
 
@@ -240,17 +240,12 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       
       public void OnUsePotion()
       {
-
+         
          if (PotionCount > 0)
          {
-            var numPotionToDispose = Mathf.Min(PotionCount, 1);
-            _session.Data.Inventory.Remove("Potion(100)", numPotionToDispose);
-            
-            var healthComponent = GetComponent<HealthComponent>();
-            if (healthComponent != null)
-            {
-               healthComponent.ModifyHealth(100);
-            }
+            _health.ModifyHealth(100);
+            _session.Data.Inventory.Remove("Potion(100)", 1);
+           
          }
       }
    }

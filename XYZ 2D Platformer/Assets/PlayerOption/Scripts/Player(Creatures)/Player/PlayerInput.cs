@@ -46,7 +46,10 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
         public void OnUsePotionInput(InputAction.CallbackContext context)
         {
-            _player.OnUsePotion();
+            if (context.performed)
+            {
+                _player.OnUsePotion();
+            }
         }
     }
 }

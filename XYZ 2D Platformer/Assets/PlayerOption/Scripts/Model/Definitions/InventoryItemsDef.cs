@@ -31,7 +31,9 @@ namespace PlayerOption.Scripts.Model.Definitions
     public struct ItemDef
     {
         [SerializeField] private string _id; // constructor c# изучить
+        [SerializeField] private bool _isStackable;
         public string Id => _id;
+        public bool IsStacable => _isStackable; 
 
         public bool IsVoid => string.IsNullOrEmpty(_id);
     }

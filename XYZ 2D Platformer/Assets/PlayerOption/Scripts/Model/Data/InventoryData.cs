@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PlayerOption.Scripts.Model.Definitions;
 using UnityEngine;
 
@@ -20,34 +21,85 @@ namespace PlayerOption.Scripts.Model.Data
 
             var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
+            
+            if (itemDef.IsStacable)
+            {
+                AddToStack(id, value);
+            }
+            else
+            {
+                AddNonStack(id,value);
+            }
 
+            OnChanged?.Invoke(id, Count(id));
+        }
+
+        private void AddToStack(string id, int value)
+        {
+            var isFull = _inventory.Count >= DefsFacade.I.Player.InventorySize;
+            
             var item = GetItem(id);
             if (item == null)
             {
+                if (isFull) return;
+
+
                 item = new InventoryItemData(id);
                 _inventory.Add(item);
             }
 
             item.Value += value;
-            
-            OnChanged?.Invoke(id, Count(id));
+        }
+
+        private void AddNonStack(string id, int value)
+        {
+            var itemLasts = DefsFacade.I.Player.InventorySize - _inventory.Count;
+            value = Mathf.Min(itemLasts, value);
+            for (var i = 0; i < value; i++)
+            {
+                var item = new InventoryItemData(id) {Value = 1};
+                _inventory.Add(item);
+            }
         }
 
         public void Remove(string id, int value)
         {
             var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
-            
+
+            if (itemDef.IsStacable)
+            {
+                RemoveFromStack(id,value);
+            }
+            else
+            {
+                RemoveNonStack(id, value);
+            }
+
+            OnChanged?.Invoke(id, Count(id));
+        }
+
+        private void RemoveFromStack(string id, int value)
+        {
             var item = GetItem(id);
             if (item == null) return;
             {
                 item.Value -= value;
             }
 
-            if (item.Value <= 0)
+            if (item.Value <= 0) 
                 _inventory.Remove(item);
-            
-            OnChanged?.Invoke(id, Count(id));
+        }
+
+        private void RemoveNonStack(string id, int value)
+        {
+            for (var i = 0; i < value; i++)
+            {
+                var item = GetItem(id);
+                if (item == null) return;
+
+                _inventory.Remove(item);
+            }
         }
 
         private InventoryItemData GetItem(string id)
