@@ -125,8 +125,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       {
         if (!IsGrounded && _isDoubleJump && !_isOnWall)
         {
-           _particles.Spawn("Jump");
            _isDoubleJump = false;
+           DoJumpVfx();
            return _jumpSpeed;
         }
 
@@ -215,6 +215,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       private void ThrowAndRemoveFromInventory()
       {
+         Sounds.Play("Range");
          _particles.Spawn("Throw");
          _session.Data.Inventory.Remove("Sword", 1);
       }
