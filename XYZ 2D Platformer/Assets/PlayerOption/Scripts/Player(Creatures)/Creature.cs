@@ -1,4 +1,5 @@
-﻿using PlayerOption.Scripts.Components;
+﻿using PlayerOption.Scripts.Audio;
+using PlayerOption.Scripts.Components;
 using PlayerOption.Scripts.Components.ColliderBased;
 using PlayerOption.Scripts.Components.GoBased;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
         protected Rigidbody2D Rigidbody;
         protected Vector2 Direction;
         protected Animator Animator;
+        protected PlaySoundsComponent Sounds;
         protected bool IsGrounded;
         private bool _isJumpimg;
 
@@ -37,6 +39,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
+            Sounds = GetComponent<PlaySoundsComponent>();
         }
         
         public void SetDirection(Vector2 direction)
@@ -89,11 +92,19 @@ namespace PlayerOption.Scripts.Player_Creatures_
 
         protected virtual float CalculateJumpVelocity(float yVelocity)
         {
-            if (!IsGrounded) return yVelocity;
-            yVelocity += _jumpSpeed;
-            _particles.Spawn("Jump");
+            if (IsGrounded)
+            {
+                yVelocity = _jumpSpeed;
+                DoJumpVfx();
+            }
 
             return yVelocity;
+        }
+
+        protected void DoJumpVfx()
+        {
+            _particles.Spawn("Jump");
+            Sounds.Play("Jump");
         }
         
         public void Flip(Vector2 direction)
@@ -119,6 +130,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
         public virtual void Attack()
         {
             Animator.SetTrigger(AttackKey);
+            Sounds.Play("Melee");
         }
         
         public void OnDoAttack()
