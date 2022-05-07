@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358327891}
-  - component: {fileID: 1358327892}
   - component: {fileID: 1358327893}
   m_Layer: 11
   m_Name: Vfx
@@ -32,14 +31,6 @@ Transform:
   m_Father: {fileID: 6108174305556305480}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1358327892
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358327890}
-  m_Enabled: 1
 --- !u!82 &1358327893
 AudioSource:
   m_ObjectHideFlags: 0
@@ -49,7 +40,7 @@ AudioSource:
   m_GameObject: {fileID: 1358327890}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 0ddccc85b22ae1f47944023630c43d19,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 55373946bb95d6a4e9e2793c11bda828,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -483,7 +474,7 @@ AudioSource:
   m_GameObject: {fileID: 4171772526979705447}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: efe4d81d8fda39441862b64fbc8fed07,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e304872dbe3e53e48b40531e9afe2b44,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 57b930c7952c3e0479b1e148e77ba513, type: 3}
   m_PlayOnAwake: 0
@@ -684,6 +675,7 @@ GameObject:
   - component: {fileID: 7328438779001454940}
   - component: {fileID: 1687810098}
   - component: {fileID: 1365019803}
+  - component: {fileID: 1365019814}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1115,7 +1107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737b2be7c4214a638dad311676ab2006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 0}
+  _source: {fileID: 1358327893}
   _sounds:
   - _id: Jump
     _clip: {fileID: 8300000, guid: f5681b5a4b0154145abf97447368c3eb, type: 3}
@@ -1125,6 +1117,14 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: a83da4dad82096f42b31024816a56436, type: 3}
   - _id: Range
     _clip: {fileID: 8300000, guid: 7054ea80a8eb7544eb53693e982df6d6, type: 3}
+--- !u!81 &1365019814
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108174305556305478}
+  m_Enabled: 1
 --- !u!1 &6108174305646824292
 GameObject:
   m_ObjectHideFlags: 0
