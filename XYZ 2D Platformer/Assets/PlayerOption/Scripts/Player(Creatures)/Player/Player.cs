@@ -100,7 +100,6 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          else
          {
             _isOnWall = false;
-            
             Rigidbody.gravityScale = _defaultGravityScale;
          }
          
