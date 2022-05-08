@@ -15,7 +15,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         [SerializeField] private float _attackCooldown = 1f;
         [SerializeField] private float _missPlayerCooldown = 0.5f;
 
-        private Coroutine _current;
+        private IEnumerator _current;
         private GameObject _target;
 
         private SpawnListComponent _particles;
@@ -45,7 +45,6 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
             if(_isDead) return;
             
             _target = go;
-
             StartCoroutine(AgroToPlayer());
         }
 
@@ -119,8 +118,9 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
             {
                 StopCoroutine(_current);
             }
-            
-            _current = StartCoroutine(coroutine);
+
+            _current = coroutine;
+            StartCoroutine(coroutine);
         }
         
         public void OnDie()

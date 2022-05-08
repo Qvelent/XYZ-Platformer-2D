@@ -2843,17 +2843,17 @@ PrefabInstance:
     - target: {fileID: 6108174305556305484, guid: 46b7f00ae5d5b4043aee008cbed28896,
         type: 3}
       propertyPath: _knockBackForce
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6108174305556305484, guid: 46b7f00ae5d5b4043aee008cbed28896,
         type: 3}
       propertyPath: _knockBackLength
-      value: 2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6108174305556305484, guid: 46b7f00ae5d5b4043aee008cbed28896,
         type: 3}
       propertyPath: _knockBackCounter
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b7f00ae5d5b4043aee008cbed28896, type: 3}
