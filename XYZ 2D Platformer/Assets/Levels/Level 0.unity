@@ -1652,6 +1652,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TotemHeadNoHair-Red L
       objectReference: {fileID: 0}
+    - target: {fileID: 1654728255262507712, guid: 40db0303d6dd7f744ab63f048c7ec068,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1654728255262507713, guid: 40db0303d6dd7f744ab63f048c7ec068,
         type: 3}
       propertyPath: m_RootOrder
@@ -1888,6 +1893,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TotemHead-Red L
       objectReference: {fileID: 0}
+    - target: {fileID: 5541062714240491137, guid: b993f3f023017ff478264c9a63f596dd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b993f3f023017ff478264c9a63f596dd, type: 3}
 --- !u!1001 &573085443
@@ -1956,6 +1966,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TotemHeadNoHair-Green (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577741025934153968, guid: 1c344d95b5f2ba943940eb00d5b56d19,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c344d95b5f2ba943940eb00d5b56d19, type: 3}
@@ -2423,6 +2438,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TotemHead-Green
       objectReference: {fileID: 0}
+    - target: {fileID: 1010177581108778545, guid: cc9024e7e3d7f4b42a7765f95f668c4e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863432074255800773, guid: cc9024e7e3d7f4b42a7765f95f668c4e,
         type: 3}
       propertyPath: m_RootOrder
@@ -2568,7 +2588,7 @@ PrefabInstance:
     - target: {fileID: 4577741025934153968, guid: 1c344d95b5f2ba943940eb00d5b56d19,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6827737576316343693, guid: 1c344d95b5f2ba943940eb00d5b56d19,
         type: 3}
@@ -2680,6 +2700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TotemHeadNoHair-Red L (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654728255262507712, guid: 40db0303d6dd7f744ab63f048c7ec068,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1654728255262507713, guid: 40db0303d6dd7f744ab63f048c7ec068,
         type: 3}
@@ -2960,6 +2985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TotemHeadNoHair-Blue L (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 892844133017277600, guid: 415e7cc826b96df4b84ae0b0eea6373b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2504434406384137860, guid: 415e7cc826b96df4b84ae0b0eea6373b,
         type: 3}
@@ -3521,7 +3551,7 @@ PrefabInstance:
     - target: {fileID: 892844133017277600, guid: 415e7cc826b96df4b84ae0b0eea6373b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2504434406384137860, guid: 415e7cc826b96df4b84ae0b0eea6373b,
         type: 3}
@@ -3827,6 +3857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TotemHead Blue L
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482767105039114667, guid: 6b29170ffaee79d45b8b1ff5938028b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8482767105039114678, guid: 6b29170ffaee79d45b8b1ff5938028b4,
         type: 3}
@@ -4839,12 +4874,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sharky
       objectReference: {fileID: 0}
+    - target: {fileID: 4123523694213253623, guid: ec79ca55764a9bc43b58034b8188673c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4227833366650247018, guid: ec79ca55764a9bc43b58034b8188673c,
         type: 3}
       propertyPath: _source
       value: 
       objectReference: {fileID: 1072517476}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4227833366650247018, guid: ec79ca55764a9bc43b58034b8188673c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec79ca55764a9bc43b58034b8188673c, type: 3}
 --- !u!1 &4496419485929500545
 GameObject:
@@ -10753,6 +10794,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SeaShell
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545276520380279644, guid: 533435a770d494743a7163422c66d072,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7545276520380279647, guid: 533435a770d494743a7163422c66d072,
         type: 3}
