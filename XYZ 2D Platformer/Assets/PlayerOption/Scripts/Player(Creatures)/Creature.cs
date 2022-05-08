@@ -1,5 +1,4 @@
 ﻿using PlayerOption.Scripts.Audio;
-using PlayerOption.Scripts.Components;
 using PlayerOption.Scripts.Components.ColliderBased;
 using PlayerOption.Scripts.Components.GoBased;
 using UnityEngine;
@@ -29,8 +28,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
         private SpriteRenderer _playerSr;
         protected bool IsGrounded;
         private bool _isJumpimg;
-
-
+        
         private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
         private static readonly int IsVerticalVelocityKey = Animator.StringToHash("vertical-velocity");
         private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -62,8 +60,6 @@ namespace PlayerOption.Scripts.Player_Creatures_
                 var xVelocity = Direction.x * _moveSpeed;
                 var yVelocity = CalculateYVelocity();
                 Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
-                
-                
             }
             else
             {

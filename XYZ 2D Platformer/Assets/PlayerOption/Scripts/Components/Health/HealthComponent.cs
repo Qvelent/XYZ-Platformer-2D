@@ -22,13 +22,13 @@ namespace PlayerOption.Scripts.Components.Health
             if (healthDelta < 0) // Если хп героя меньше 0 
             {
                 _onDamage?.Invoke(); // if(_onDamage != null) { _onDamage.Invoke(); }
-                Debug.Log("Health: " + _health);
+                Debug.Log("Хп осталось: " + _health);
             }
 
             if (healthDelta > 0)
             {
                 _onHealing?.Invoke();
-                Debug.Log("Health: " + _health);
+                Debug.Log("Банка похилила: " + _health);
             }
 
             if (_health <= 0)
@@ -36,6 +36,8 @@ namespace PlayerOption.Scripts.Components.Health
                 _onDie?.Invoke();
             }
         }
+        
+        
 #if UNITY_EDITOR
         [ContextMenu("Update Health")]
         private void UpdateHealth()
