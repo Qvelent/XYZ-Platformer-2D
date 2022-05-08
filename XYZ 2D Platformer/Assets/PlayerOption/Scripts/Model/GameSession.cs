@@ -9,7 +9,7 @@ namespace PlayerOption.Scripts.Model
     {
         [SerializeField] private PlayerData _data;
         public PlayerData Data => _data;
-
+        
         private void Awake()
         {
             if (ItSessionExit())
@@ -21,7 +21,7 @@ namespace PlayerOption.Scripts.Model
                 DontDestroyOnLoad(this);
             }
         }
-
+        
         private bool ItSessionExit()
         {
             var sessions = FindObjectsOfType<GameSession>();
