@@ -23,8 +23,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         private Animator _animator;
         private bool _isDead;
         private Patrol _patrol;
-
-
+        
         private static readonly int IsDieKey = Animator.StringToHash("is-dead");
 
         private void Awake()
