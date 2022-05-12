@@ -1,58 +1,35 @@
-﻿using UnityEngine;
-using Image = UnityEngine.UI.Image;
+﻿using System;
+using System.Collections;
+using PlayerOption.Scripts.UI;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 namespace PlayerOption.Scripts.Utils
 {
     public class FadeScreen : MonoBehaviour
     {
-        public Image fadeScreen;
-        
-        public float _fadeSpeed;
-        private bool _shouldFadeToBlack, _shouldFadeFromBlack;
+        [SerializeField] private string _sceneName;
 
+        public static FadeScreen instance;
+        
         private void Awake()
         {
-            fadeScreen.gameObject.SetActive(true);
+            instance = this;
         }
 
-        private void Start()
+        public void EndLevel()
         {
-            FadeFromBlack();
+            StartCoroutine(EndLevelCo());
         }
 
-        private void Update()
+        private IEnumerator EndLevelCo()
         {
-            if (_shouldFadeToBlack)
-            {
-                fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,
-                    Mathf.MoveTowards(fadeScreen.color.a, 1f, _fadeSpeed * Time.deltaTime));
-                if (fadeScreen.color.a == 1f)
-                {
-                    _shouldFadeToBlack = false;
-                }
-            }
+            UIComponent.instance.FadeToBlack();
 
-            if (_shouldFadeFromBlack)
-            {
-                fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,
-                    Mathf.MoveTowards(fadeScreen.color.a, 0f, _fadeSpeed * Time.deltaTime));
-                if (fadeScreen.color.a == 0f)
-                {
-                    _shouldFadeFromBlack = false;
-                }
-            }
-        }
-
-        public void FadeToBlack()
-        {
-            _shouldFadeToBlack = true;
-            _shouldFadeFromBlack = false;
-        }
-
-        public void FadeFromBlack()
-        {
-            _shouldFadeFromBlack = true;
-            _shouldFadeToBlack = false;
+            yield return new WaitForSeconds((1/ UIComponent.instance._fadeSpeed)+ 0.1f); 
+            
+            SceneManager.LoadScene(_sceneName);
         }
     }
 }

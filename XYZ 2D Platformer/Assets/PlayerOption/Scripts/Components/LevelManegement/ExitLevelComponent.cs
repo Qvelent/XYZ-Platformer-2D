@@ -1,15 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using PlayerOption.Scripts.Utils;
+using UnityEngine;
 
 namespace PlayerOption.Scripts.Components.LevelManegement
 {
     public class ExitLevelComponent : MonoBehaviour
     {
-        [SerializeField] private string _sceneName;
-        
         public void Exit()
         {
-            SceneManager.LoadScene(_sceneName);
+           FadeScreen.instance.EndLevel();
         }
     }
 }

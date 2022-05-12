@@ -1,27 +1,62 @@
-﻿using System.Collections;
-using PlayerOption.Scripts.Utils;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace PlayerOption.Scripts.UI
 {
     public class UIComponent : MonoBehaviour
     {
-        private FadeScreen _fadeScreen;
-
-        private IEnumerator StartFateScreen()
+        public Image fadeScreen;
+        public float _fadeSpeed;
+        public bool _shouldFadeToBlack, _shouldFadeFromBlack;
+        
+        public static UIComponent instance;
+        
+        private void Awake()
         {
-            _fadeScreen.FadeToBlack();
+            instance = this;
             
-            yield return new WaitForSeconds((1f / _fadeScreen._fadeSpeed)+ .2f);
-            
-            _fadeScreen.FadeFromBlack();
+            fadeScreen.gameObject.SetActive(true);
         }
 
-        private IEnumerator EndFateScreen()
+        private void Start()
         {
-            _fadeScreen.FadeToBlack();
+            FadeFromBlack();
+        }
 
-            yield return new WaitForSeconds((1f / _fadeScreen._fadeSpeed)+ 3f); 
+        private void Update()
+        {
+            if (_shouldFadeToBlack)
+            {
+                fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,
+                    Mathf.MoveTowards(fadeScreen.color.a, 1f, _fadeSpeed * Time.deltaTime));
+                
+                if (fadeScreen.color.a == 1f)
+                {
+                    _shouldFadeToBlack = false;
+                }
+            }
+
+            if (!_shouldFadeFromBlack) return;
+            
+            fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b,
+                Mathf.MoveTowards(fadeScreen.color.a, 0f, _fadeSpeed * Time.deltaTime));
+                
+            if (fadeScreen.color.a == 0f)
+            {
+                _shouldFadeFromBlack = false;
+            }
+        }
+
+        public void FadeToBlack()
+        {
+            _shouldFadeToBlack = true;
+            _shouldFadeFromBlack = false;
+        }
+
+        public void FadeFromBlack()
+        {
+            _shouldFadeFromBlack = true;
+            _shouldFadeToBlack = false;
         }
     }
 }
