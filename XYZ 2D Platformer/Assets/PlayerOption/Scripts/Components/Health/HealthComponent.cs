@@ -6,33 +6,32 @@ namespace PlayerOption.Scripts.Components.Health
 {
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField] private int _health;
+        [SerializeField] private int _maxHealth;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onHealing;
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
-        
-        public void ModifyHealth(int healthDelta)
-        {
-            if (_health <= 0) return;
-            
-            _health += healthDelta; //  x = x + y
-            _onChange?.Invoke(_health);
 
-            if (healthDelta <= 0)
+        public void ModifyHealth(int hpDelta)
+        {
+            if (_maxHealth <= 0) return;
+            
+            _maxHealth += hpDelta;
+            _onChange?.Invoke(_maxHealth);
+
+            if (hpDelta < 0)
             {
                 _onDamage?.Invoke();
-                Debug.Log("Оставшееся хп: " + _health);
+                Debug.Log("Оставшееся хп: " + _maxHealth);
             }
             
-            
-            if (healthDelta > 0)
+            if (hpDelta > 0)
             {
                 _onHealing?.Invoke();
-                Debug.Log("Банка похилила: " + _health);
+                Debug.Log("Банка похилила: " + _maxHealth);
             }
-
-            if (_health <= 0)
+            
+            if (_maxHealth <= 0)
             {
                 _onDie?.Invoke();
             }
@@ -43,14 +42,14 @@ namespace PlayerOption.Scripts.Components.Health
         [ContextMenu("Update Health")]
         private void UpdateHealth()
         {
-            _onChange?.Invoke(_health);
+            _onChange?.Invoke(_maxHealth);
         }
 
 #endif
        
         public void SetHealth(int health)
         {
-            _health = health;
+            _maxHealth = health;
         }
 
         private void OnDestroy()
@@ -61,8 +60,6 @@ namespace PlayerOption.Scripts.Components.Health
         [Serializable]
         public class HealthChangeEvent : UnityEvent<int>
         {
-            
         }
-        
     }
 }

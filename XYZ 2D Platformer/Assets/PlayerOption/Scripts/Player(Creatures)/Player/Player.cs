@@ -11,21 +11,17 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 {
    public class Player : Creature
    {
-      [Header("Player Check")]
       [SerializeField] private ColliderCheck _wallCheck;
       [SerializeField] private CheckCircleOverLap _interactionCheck;
       
       [SerializeField] private float _slamDownVelocity;
       [SerializeField] private CoolDown _throwCD;
-
-      [Header("Super Throw")] 
+      [SerializeField] private AnimatorController _armed;
+      [SerializeField] private AnimatorController _disarmed;
+      
       [SerializeField] private CoolDown _superThrowCD;
       [SerializeField] private int _superThrowParticles;
       [SerializeField] private float _superThrowDelay;
-
-      [Header("(Dis)Armed")]
-      [SerializeField] private AnimatorController _armed;
-      [SerializeField] private AnimatorController _disarmed;
       
       [SerializeField] private ProbabilityDropComponent _hitDrop;
       
@@ -140,6 +136,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       public override void TakeDamage()
       {
          base.TakeDamage();
+         
          if (CoinsCount > 0)
          {
             SpawnCoins();

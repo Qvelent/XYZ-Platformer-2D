@@ -11,21 +11,18 @@ namespace PlayerOption.Scripts.Player_Creatures_
         [SerializeField] private bool _invertScale;
         [SerializeField] private float _moveSpeed;
         [SerializeField] protected float _jumpSpeed;
-        [SerializeField] private float _knockBackLength, _knockBackForce;
-        [SerializeField] private float _knockBackCounter;
+        [SerializeField] private float _damageVelocity;
 
+        [Header("Checkers")]
         [SerializeField] protected LayerMask _graundLayer;
         [SerializeField] private ColliderCheck _groundCheck;
         [SerializeField] private CheckCircleOverLap _attackRange;
-
-        [Header("Particles")] 
         [SerializeField] protected SpawnListComponent _particles;
 
         protected Rigidbody2D Rigidbody;
         protected Vector2 Direction;
         protected Animator Animator;
         protected PlaySoundsComponent Sounds;
-        private SpriteRenderer _playerSr;
         protected bool IsGrounded;
         private bool _isJumpimg;
         
@@ -40,7 +37,6 @@ namespace PlayerOption.Scripts.Player_Creatures_
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
             Sounds = GetComponent<PlaySoundsComponent>();
-            _playerSr = GetComponent<SpriteRenderer>();
         }
         
         public void SetDirection(Vector2 direction)
@@ -52,28 +48,19 @@ namespace PlayerOption.Scripts.Player_Creatures_
         {
            IsGrounded = _groundCheck.IsTouchingLayer;
         }
-        
+
         private void FixedUpdate()
         {
-            if (_knockBackCounter <= 0)
-            {
-                var xVelocity = Direction.x * _moveSpeed;
-                var yVelocity = CalculateYVelocity();
-                Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
-            }
-            else
-            {
-                _knockBackCounter -= Time.deltaTime;
-                Rigidbody.velocity = !_playerSr.flipX ? new Vector2(-_knockBackForce, Rigidbody.velocity.y) : new Vector2(_knockBackForce, Rigidbody.velocity.y);
-            }
-            Flip(Direction);
+            var xVelocity = Direction.x * _moveSpeed;
+            var yVelocity = CalculateYVelocity();
+            Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
             
             Animator.SetBool(IsGroundKey, IsGrounded);
             Animator.SetBool(IsRunningKey, Direction.x != 0);
             Animator.SetFloat(IsVerticalVelocityKey, Rigidbody.velocity.y);
+            
+            Flip(Direction);
         }
-        
-        
         
         protected  virtual float CalculateYVelocity()
         {
@@ -90,7 +77,7 @@ namespace PlayerOption.Scripts.Player_Creatures_
                 _isJumpimg = true;
                 
                 var isFalling = Rigidbody.velocity.y <= 0.001f;
-                yVelocity =isFalling ? CalculateJumpVelocity(yVelocity) : yVelocity;
+                yVelocity = isFalling ? CalculateJumpVelocity(yVelocity) : yVelocity;
             }
             else if (Rigidbody.velocity.y > 0 && _isJumpimg)
             {
@@ -133,10 +120,9 @@ namespace PlayerOption.Scripts.Player_Creatures_
         
         public virtual void TakeDamage()
         {
-            _knockBackCounter = _knockBackLength;
-            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _knockBackForce);
-            
+            _isJumpimg = false;
             Animator.SetTrigger(Hit);
+            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
         }
         
         public virtual void Attack()
