@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 4991921499652971840}
   - component: {fileID: 5003420561563711237}
   - component: {fileID: 854917868}
-  - component: {fileID: 4227833366650247018}
+  - component: {fileID: 395984119}
   m_Layer: 13
   m_Name: Sharky
   m_TagString: Enemy
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31d3046705c9ab45b8836e2668ba90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _maxHealth: 5
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -665,7 +665,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4227833366650247018}
+      - m_Target: {fileID: 4123523694213253515}
         m_MethodName: Play
         m_Mode: 5
         m_Arguments:
@@ -794,7 +794,7 @@ MonoBehaviour:
   _obstacleCheck: {fileID: 853248956997751227}
   _creature: {fileID: 4991921499652971840}
   _direction: 1
---- !u!114 &4227833366650247018
+--- !u!114 &395984119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -807,11 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _source: {fileID: 0}
-  _sounds:
-  - _id: Hit
-    _clip: {fileID: 8300000, guid: e14cc5d2a301d3243a9a773be8b0e1bd, type: 3}
-  - _id: Melee
-    _clip: {fileID: 8300000, guid: a83da4dad82096f42b31024816a56436, type: 3}
+  _sounds: []
 --- !u!1 &4123523694284096853
 GameObject:
   m_ObjectHideFlags: 0
