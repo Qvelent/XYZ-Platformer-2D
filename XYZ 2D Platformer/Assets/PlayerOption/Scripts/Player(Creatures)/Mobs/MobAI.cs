@@ -14,7 +14,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         [SerializeField] private float _alarmDelay = 0.5f;
         [SerializeField] private float _attackCooldown = 1f;
         [SerializeField] private float _missPlayerCooldown = 0.5f;
-        [SerializeField] private bool _isDoPatrol;
+        //[SerializeField] private bool _isDoPatrol;
 
         private IEnumerator _current;
         private GameObject _target;
@@ -38,7 +38,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
 
         private void Start()
         {
-            if (!_isDoPatrol) return;
+            //if (!_isDoPatrol) return;
             
             StartState(_patrol.DoPatrol());
             
@@ -70,8 +70,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
 
         private IEnumerator GoToPlayer()
         {
-            if (_isDoPatrol)
-            {
+           // if (_isDoPatrol)
+            
                 while (_vision.IsTouchingLayer)
                 {
                     if (_canAttack.IsTouchingLayer)
@@ -90,18 +90,20 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
                 yield return new WaitForSeconds(_missPlayerCooldown);
 
                 StartState(_patrol.DoPatrol());
-            }
+            
         }
 
         private IEnumerator Attack()
         {
+            //if (_isDoPatrol && !_isDoPatrol) yield break;
             while (_canAttack.IsTouchingLayer)
             {
                 _creature.Attack();
                 yield return new WaitForSeconds(_attackCooldown);
             }
-            
+                            
             StartState(GoToPlayer());
+
         }
         
         private void SetDirectionToTarget()
