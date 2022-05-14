@@ -14,6 +14,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         [SerializeField] private float _alarmDelay = 0.5f;
         [SerializeField] private float _attackCooldown = 1f;
         [SerializeField] private float _missPlayerCooldown = 0.5f;
+        [SerializeField] private bool _isDoPatrol;
 
         private IEnumerator _current;
         private GameObject _target;
@@ -23,6 +24,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         private Animator _animator;
         private bool _isDead;
         private Patrol _patrol;
+        
         
         private static readonly int IsDieKey = Animator.StringToHash("is-dead");
 
@@ -36,7 +38,10 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
 
         private void Start()
         {
+            if (!_isDoPatrol) return;
+            
             StartState(_patrol.DoPatrol());
+            
         }
         
         public void OnPlayerVision(GameObject go)
@@ -65,24 +70,27 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
 
         private IEnumerator GoToPlayer()
         {
-            while (_vision.IsTouchingLayer)
+            if (_isDoPatrol)
             {
-                if (_canAttack.IsTouchingLayer)
+                while (_vision.IsTouchingLayer)
                 {
-                    StartState(Attack());
+                    if (_canAttack.IsTouchingLayer)
+                    {
+                        StartState(Attack());
+                    }
+                    else
+                    {
+                        SetDirectionToTarget();
+                    }
+                    yield return null;
                 }
-                else
-                {
-                    SetDirectionToTarget();
-                }
-                yield return null;
+
+                _creature.SetDirection(Vector2.zero);
+                _particles.Spawn("Miss");
+                yield return new WaitForSeconds(_missPlayerCooldown);
+
+                StartState(_patrol.DoPatrol());
             }
-
-            _creature.SetDirection(Vector2.zero);
-            _particles.Spawn("Miss");
-            yield return new WaitForSeconds(_missPlayerCooldown);
-
-            StartState(_patrol.DoPatrol());
         }
 
         private IEnumerator Attack()

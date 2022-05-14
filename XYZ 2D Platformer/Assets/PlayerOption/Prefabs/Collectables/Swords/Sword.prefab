@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246e35e990544e96a03ac91c3d796986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frequency: 0.1
-  _amplitude: 5
+  _frequency: 5
+  _amplitude: 0.1
   _randomize: 0
 --- !u!50 &3038720887792104443
 Rigidbody2D:
