@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 503520501043120049}
   - component: {fileID: 1426909241583339016}
   m_Layer: 0
-  m_Name: Attack Crabby
+  m_Name: Attack PinkStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 216331095
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 809dcc3b6b58abb42ae0ab7b61b7f597, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00edfb8b7c4d10240b08998c37c92c01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,11 +97,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frameRate: 15
   _clips:
-  - _name: attack crabby
+  - _name: attack pinkStar
     _sprites:
-    - {fileID: 21300000, guid: 809dcc3b6b58abb42ae0ab7b61b7f597, type: 3}
-    - {fileID: 21300000, guid: 90c4d6af7fa762b4293d02ed495662e9, type: 3}
-    - {fileID: 21300000, guid: a7574f65ea79afb4eb6a14d1e456818f, type: 3}
+    - {fileID: 21300000, guid: 00edfb8b7c4d10240b08998c37c92c01, type: 3}
+    - {fileID: 21300000, guid: 7f11abdeb7bdd7247badd2d191b6c8f0, type: 3}
+    - {fileID: 21300000, guid: 9cc7cf3a57f8d0346b5be438832d9b62, type: 3}
+    - {fileID: 21300000, guid: 4fba1f12bfd1a0b40bfab2d846f60c98, type: 3}
     _loop: 0
     _allowNextClip: 0
     _onComponent:

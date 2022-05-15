@@ -14,6 +14,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         [SerializeField] private float _alarmDelay = 0.5f;
         [SerializeField] private float _attackCooldown = 1f;
         [SerializeField] private float _missPlayerCooldown = 0.5f;
+        
+        [SerializeField] private float _horizontalTreshold = 0.2f;
         //[SerializeField] private bool _isDoPatrol;
 
         private IEnumerator _current;
@@ -80,8 +82,13 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
                     }
                     else
                     {
-                        SetDirectionToTarget();
+                        var horizontalDelta = Mathf.Abs(_target.transform.position.x - transform.position.x);
+                        if (horizontalDelta <= _horizontalTreshold)
+                            _creature.SetDirection(Vector2.zero);
+                        else
+                            SetDirectionToTarget();
                     }
+
                     yield return null;
                 }
 
@@ -121,7 +128,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
 
         private void StartState(IEnumerator coroutine)
         {
-            _creature.SetDirection(Vector3.zero);
+            _creature.SetDirection(Vector2.zero);
             
             if (_current != null)
             {
@@ -134,7 +141,6 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         
         public void OnDie()
         {
-            
             _isDead = true;
             _animator.SetBool(IsDieKey, true);
             
