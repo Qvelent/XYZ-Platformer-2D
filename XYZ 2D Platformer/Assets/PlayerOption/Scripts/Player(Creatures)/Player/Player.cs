@@ -22,6 +22,9 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       [SerializeField] private CoolDown _superThrowCD;
       [SerializeField] private int _superThrowParticles;
       [SerializeField] private float _superThrowDelay;
+
+      [SerializeField] private CoolDown _dashCD;
+      [SerializeField] private float _dashForce;
       
       [SerializeField] private ProbabilityDropComponent _hitDrop;
       
@@ -242,6 +245,23 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
             _health.ModifyHealth(100);
             _session.Data.Inventory.Remove("Potion(100)", 1);
            
+         }
+      }
+
+      public void OnPlayerDash()
+      {
+         if (!_dashCD.IsReady) return;
+         
+         _dashCD.Reset();
+
+         switch (transform.localScale.x)
+         {
+            case -1:
+               Rigidbody.AddForce(Vector2.left * _dashForce);
+               break;
+            case 1:
+               Rigidbody.AddForce(Vector2.right * _dashForce);
+               break;
          }
       }
    }

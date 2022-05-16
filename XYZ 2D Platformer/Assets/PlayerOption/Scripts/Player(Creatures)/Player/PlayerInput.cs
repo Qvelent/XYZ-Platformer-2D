@@ -51,6 +51,14 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
                 _player.OnUsePotion();
             }
         }
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _player.OnPlayerDash();
+            }
+        }
     }
 }
 
