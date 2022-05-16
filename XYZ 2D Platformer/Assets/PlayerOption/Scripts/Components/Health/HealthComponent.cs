@@ -11,20 +11,47 @@ namespace PlayerOption.Scripts.Components.Health
         [SerializeField] private UnityEvent _onHealing;
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
+        [SerializeField] private float invincibleLength;
+        [SerializeField] private float _invincibleCounter;
+
+        private SpriteRenderer _playerSr;
+
+        private void Start()
+        {
+            _playerSr = GetComponent<SpriteRenderer>();
+        }
+        
+        private void Update()
+        {
+            if (!(_invincibleCounter > 0)) return;
+            _invincibleCounter -= Time.deltaTime;
+
+            if (!(_invincibleCounter <= 0)) return;
+            var color = _playerSr.color;
+            color = new Color(color.r, color.g, color.b, 1f);
+            _playerSr.color = color;
+        }
 
         public void ModifyHealth(int hpDelta)
         {
             if (_maxHealth <= 0) return;
             
+            if (!(_invincibleCounter <= 0)) return;
+
             _maxHealth += hpDelta;
             _onChange?.Invoke(_maxHealth);
-
+            
             if (hpDelta < 0)
             {
+                _invincibleCounter = invincibleLength;
+                var color = _playerSr.color;
+                color = new Color(color.r, color.g, color.b, .5f);
+                _playerSr.color = color;
+                
                 _onDamage?.Invoke();
                 Debug.Log("Оставшееся хп: " + _maxHealth);
             }
-            
+
             if (hpDelta > 0)
             {
                 _onHealing?.Invoke();

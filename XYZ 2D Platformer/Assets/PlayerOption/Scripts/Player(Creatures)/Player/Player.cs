@@ -25,6 +25,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       
       [SerializeField] private ProbabilityDropComponent _hitDrop;
       
+      private SpriteRenderer _playerSr;
       private static readonly int ThrowKey = Animator.StringToHash("throw");
       private static readonly int IsOnWall = Animator.StringToHash("is-on-wall");
       
@@ -39,6 +40,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
       private int SwordCount => _session.Data.Inventory.Count("Sword"); // property c# изучить
       private int PotionCount => _session.Data.Inventory.Count("Potion(100)"); // property c# изучить
+      
 
 
       protected override void Awake()
@@ -86,7 +88,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       protected override void Update()
       {
          base.Update();
-
+         
          var moveToSameDirection = Direction.x * transform.lossyScale.x > 0;
          if (_wallCheck.IsTouchingLayer && moveToSameDirection)
          {
@@ -136,11 +138,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       public override void TakeDamage()
       {
          base.TakeDamage();
-         
-         if (CoinsCount > 0)
-         {
-            SpawnCoins();
-         }
+         if (CoinsCount <= 0) return;
+         SpawnCoins();
       }
 
       private void SpawnCoins()
