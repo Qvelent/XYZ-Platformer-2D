@@ -18,8 +18,9 @@ namespace PlayerOption.Scripts.Movement
            _rigidbody2D.velocity = new Vector2(_animalsSpeed, 0f);
        }
        
-       void OnTriggerEnter2D(Collider2D other) 
+       void OnTriggerEnter2D(Collider2D other)
        {
+           if (!other.CompareTag("Untagged")) return;
            _animalsSpeed = -_animalsSpeed;
            FlipEnemyFacing();
        }

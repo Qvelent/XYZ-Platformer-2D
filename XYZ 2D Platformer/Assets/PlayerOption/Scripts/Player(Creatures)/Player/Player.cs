@@ -6,6 +6,8 @@ using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace PlayerOption.Scripts.Player_Creatures_.Player
 {
@@ -25,7 +27,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       [SerializeField] private CoolDown _dashCD;
       [SerializeField] private float _dashForce;
-      
+
       [SerializeField] private ProbabilityDropComponent _hitDrop;
       
       private SpriteRenderer _playerSr;
@@ -35,7 +37,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private bool _isDoubleJump;
       private bool _isOnWall;
       private bool _isSuperThrow;
-      
+
       private GameSession _session;
       private HealthComponent _health;
       private float _defaultGravityScale;
@@ -253,16 +255,23 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          if (!_dashCD.IsReady) return;
          
          _dashCD.Reset();
-
+         
          switch (transform.localScale.x)
          {
             case -1:
                Rigidbody.AddForce(Vector2.left * _dashForce);
+               DashSound();
                break;
             case 1:
                Rigidbody.AddForce(Vector2.right * _dashForce);
+               DashSound();
                break;
          }
+      }
+
+      private void DashSound()
+      {
+         Sounds.Play("Dash");
       }
    }
 }

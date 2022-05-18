@@ -11,8 +11,9 @@ namespace PlayerOption.Scripts.Components.Health
         [SerializeField] private UnityEvent _onHealing;
         [SerializeField] private UnityEvent _onDie;
         [SerializeField] private HealthChangeEvent _onChange;
-        [SerializeField] private float invincibleLength;
-        [SerializeField] private float _invincibleCounter;
+        [SerializeField] private float invincibleLength = 0.1f;
+        
+        private float _invincibleCounter;
 
         private SpriteRenderer _playerSr;
 

@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31d3046705c9ab45b8836e2668ba90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
+  _maxHealth: 3
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -254,6 +254,7 @@ MonoBehaviour:
   _onChange:
     m_PersistentCalls:
       m_Calls: []
+  invincibleLength: 0.1
 --- !u!50 &626426030575926711
 Rigidbody2D:
   serializedVersion: 4
