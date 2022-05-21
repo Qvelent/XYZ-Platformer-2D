@@ -21,7 +21,7 @@ namespace PlayerOption.Scripts.UI
             _animator.SetTrigger(Hide);
         }
 
-        public void OnCloseAnimationComplete()
+        public virtual void OnCloseAnimationComplete()
         {
             Destroy(gameObject);
         }
