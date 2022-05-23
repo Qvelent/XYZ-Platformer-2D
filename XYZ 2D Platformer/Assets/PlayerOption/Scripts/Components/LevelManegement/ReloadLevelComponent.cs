@@ -13,6 +13,8 @@ namespace PlayerOption.Scripts.Components.LevelManegement
             
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
+
+            Time.timeScale = 1f;
         }
     }
 }

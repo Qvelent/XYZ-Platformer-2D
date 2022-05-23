@@ -6,8 +6,6 @@ using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace PlayerOption.Scripts.Player_Creatures_.Player
 {
@@ -40,6 +38,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       private GameSession _session;
       private HealthComponent _health;
+      private PauseMenuController _pauseMenu;
       private float _defaultGravityScale;
 
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
@@ -59,6 +58,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       {
          _session = FindObjectOfType<GameSession>();
          _health = GetComponent<HealthComponent>();
+         _pauseMenu = GetComponent<PauseMenuController>();
          _session.Data.Inventory.OnChanged += OnInventoryChanged;
          _session.Data.Inventory.OnChanged += AnotherChanged;
          
@@ -272,6 +272,11 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private void DashSound()
       {
          Sounds.Play("Dash");
+      }
+
+      public void OnOpenPauseMenu()
+      {
+         _pauseMenu.PauseUnPause();
       }
    }
 }

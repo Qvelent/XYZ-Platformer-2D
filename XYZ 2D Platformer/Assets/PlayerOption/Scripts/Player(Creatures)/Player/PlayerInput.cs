@@ -59,6 +59,14 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
                 _player.OnPlayerDash();
             }
         }
+
+        public void OnPauseMenu(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _player.OnOpenPauseMenu();
+            }
+        }
     }
 }
 

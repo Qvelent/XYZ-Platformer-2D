@@ -7,7 +7,7 @@ namespace PlayerOption.Scripts.Components.LevelManegement
     {
         public void Exit()
         {
-           FadeScreen.instance.EndLevel();
+           PauseMenuController.instance.EndLevel();
         }
     }
 }
