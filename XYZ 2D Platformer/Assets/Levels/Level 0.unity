@@ -2244,7 +2244,7 @@ GameObject:
   - component: {fileID: 709841677}
   - component: {fileID: 709841676}
   m_Layer: 0
-  m_Name: CakeHallVFX
+  m_Name: ReverbZoneVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5148,7 +5148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879499303666681573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.113244, y: 3.49, z: -6.0075493}
+  m_LocalPosition: {x: -10.334865, y: 4.49, z: -6.0075493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3879499303774177365}
@@ -5233,7 +5233,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -6,6 +6,8 @@ namespace PlayerOption.Scripts.Audio
 {
     public class PlaySoundsComponent : MonoBehaviour
     {
+        public const string SfxSourceTag = "SfxAudioSource";
+
         [SerializeField] private AudioSource _source;
         [SerializeField] private AudioData[] _sounds;
 
@@ -14,8 +16,10 @@ namespace PlayerOption.Scripts.Audio
             foreach (var audioData in _sounds)
             {
                 if (audioData.Id != id) continue;
-                
-                _source.pitch = Random.Range(.9f, 1.1f); //--------------------
+
+                if(_source == null)
+                    _source = GameObject.FindWithTag(SfxSourceTag).GetComponent<AudioSource>();
+                    _source.pitch = Random.Range(.9f, 1.1f);
                 
                 _source.PlayOneShot(audioData.Clip);
                 break;
