@@ -15,7 +15,7 @@ namespace PlayerOption.Scripts.UI
         {
             instance = this;
             
-            fadeScreen.gameObject.SetActive(true);
+           //fadeScreen.gameObject.SetActive(true);
         }
 
         private void Start()

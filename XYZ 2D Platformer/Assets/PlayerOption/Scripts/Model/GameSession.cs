@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using PlayerOption.Scripts.Model.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PlayerOption.Scripts.Model
 {
@@ -12,6 +14,8 @@ namespace PlayerOption.Scripts.Model
         
         private void Awake()
         {
+            LoadHud();
+
             if (ItSessionExit())
             {
                 Destroy(gameObject);
@@ -21,7 +25,12 @@ namespace PlayerOption.Scripts.Model
                 DontDestroyOnLoad(this);
             }
         }
-        
+
+        private void LoadHud()
+        {
+            SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
+        }
+
         private bool ItSessionExit()
         {
             var sessions = FindObjectsOfType<GameSession>();
