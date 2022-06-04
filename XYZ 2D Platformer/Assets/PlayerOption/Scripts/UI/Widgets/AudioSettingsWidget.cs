@@ -1,5 +1,4 @@
 ﻿using Assets.PlayerOption.Scripts.Model.Data.Properties;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 

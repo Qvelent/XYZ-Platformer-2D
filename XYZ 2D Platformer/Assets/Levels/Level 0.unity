@@ -1660,6 +1660,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419523442}
+  - component: {fileID: 419523443}
   m_Layer: 5
   m_Name: Hud
   m_TagString: Untagged
@@ -1687,6 +1688,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &419523443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419523441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8442c369bb54c4499ac0cae48cd053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 1988008364}
 --- !u!4 &430901245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2321685931845440697, guid: 1c344d95b5f2ba943940eb00d5b56d19,
@@ -4308,6 +4322,8 @@ MonoBehaviour:
       _inventory:
       - Id: Sword
         Value: 10
+    Hp:
+      _value: 20
 --- !u!4 &1731718336 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9196220578023210807, guid: 415e7cc826b96df4b84ae0b0eea6373b,
@@ -4674,6 +4690,7 @@ GameObject:
   - component: {fileID: 1988008361}
   - component: {fileID: 1988008363}
   - component: {fileID: 1988008362}
+  - component: {fileID: 1988008364}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -4738,6 +4755,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988008360}
   m_CullTransparentMesh: 0
+--- !u!114 &1988008364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988008360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3af0bff1e4b30d4fbccc7be87701f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HpBar: {fileID: 952481427}
 --- !u!1001 &1996009167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12794,7 +12824,7 @@ PrefabInstance:
     - target: {fileID: 7545276520380279644, guid: 533435a770d494743a7163422c66d072,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7545276520380279647, guid: 533435a770d494743a7163422c66d072,
         type: 3}
@@ -12804,7 +12834,7 @@ PrefabInstance:
     - target: {fileID: 7545276520380279647, guid: 533435a770d494743a7163422c66d072,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.47
+      value: -8.22
       objectReference: {fileID: 0}
     - target: {fileID: 7545276520380279647, guid: 533435a770d494743a7163422c66d072,
         type: 3}

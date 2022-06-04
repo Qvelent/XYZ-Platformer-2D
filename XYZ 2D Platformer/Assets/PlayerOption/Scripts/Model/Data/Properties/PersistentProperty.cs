@@ -7,8 +7,10 @@ namespace Assets.PlayerOption.Scripts.Model.Data.Properties
     public abstract class PersistentProperty<TPropertyType> // abstract class означает, что у него будет абстрактные члены.
     {
         [SerializeField] protected TPropertyType _value;
+
         private TPropertyType _defaultValue;
-        private TPropertyType _stored;
+
+        protected TPropertyType _stored;
 
         public PersistentProperty(TPropertyType defaultValue)
         {
