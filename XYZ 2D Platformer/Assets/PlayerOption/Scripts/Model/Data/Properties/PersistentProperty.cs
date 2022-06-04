@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.PlayerOption.Scripts.Model.Data.Properties
 {
+    [Serializable]
     public abstract class PersistentProperty<TPropertyType> // abstract class означает, что у него будет абстрактные члены.
     {
         [SerializeField] private TPropertyType _value;
@@ -26,7 +28,7 @@ namespace Assets.PlayerOption.Scripts.Model.Data.Properties
                 var isEquals = _stored.Equals(value);
                 if (isEquals) return;
 
-                var oldValue = _value;
+                var oldValue = _stored;
                 Write(value);
                 _stored = _value = value;
 
