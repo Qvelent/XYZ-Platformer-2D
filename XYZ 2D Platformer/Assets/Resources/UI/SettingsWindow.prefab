@@ -56,7 +56,7 @@ MonoBehaviour:
     m_Top: -15
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -75
+  m_Spacing: -67.37
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -72,6 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6037148297342672352}
+  - component: {fileID: 5927080878878889522}
   m_Layer: 5
   m_Name: SoundValue
   m_TagString: Untagged
@@ -101,6 +102,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5927080878878889522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571633929346572714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440784a3ec66e23418dcbb98f3ad08c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 428455712828322924}
+  _value: {fileID: 2418269715712192485}
 --- !u!1 &1356536948789367953
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4930920371623066556}
+  - component: {fileID: 607662418131291606}
   m_Layer: 5
   m_Name: SFXValue
   m_TagString: Untagged
@@ -301,6 +317,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &607662418131291606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588056624383528698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440784a3ec66e23418dcbb98f3ad08c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 8339839445112111339}
+  _value: {fileID: 1184245930184686733}
 --- !u!1 &4090071179212475189
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,8 +365,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -21, y: -21}
-  m_SizeDelta: {x: 80, y: 30}
+  m_AnchoredPosition: {x: -24.7, y: -21.7}
+  m_SizeDelta: {x: 36.724274, y: 15.231293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5495973703839926576
 CanvasRenderer:
@@ -633,8 +663,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 36.09, y: -35}
-  m_SizeDelta: {x: 14.58503, y: 15.000008}
+  m_AnchoredPosition: {x: 5.5, y: -21.7}
+  m_SizeDelta: {x: 20.345928, y: 15.000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4404226289680549349
 CanvasRenderer:
@@ -676,7 +706,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 98
+  m_Text: 100
 --- !u!1 &6293756433114923036
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,8 +741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 36.09, y: -35}
-  m_SizeDelta: {x: 14.58503, y: 15.000008}
+  m_AnchoredPosition: {x: -1.6, y: -21.5}
+  m_SizeDelta: {x: 18.794907, y: 15.000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2483364719170490279
 CanvasRenderer:
@@ -754,7 +784,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 98
+  m_Text: 100
 --- !u!1 &6448824471887485097
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,9 +795,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6448824471887485096}
   - component: {fileID: 6448824471887485094}
-  - component: {fileID: 6448824471887485095}
+  - component: {fileID: 8282152212379566753}
   m_Layer: 5
-  m_Name: SettingsWindow 1
+  m_Name: SettingsWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +842,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6448824471887485095
+--- !u!114 &8282152212379566753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -821,9 +851,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6448824471887485097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb119d5f9f546a7bc004021c1ccb00a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5562193c22094f228cd14c76f748183b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _music: {fileID: 5927080878878889522}
+  _sfx: {fileID: 607662418131291606}
 --- !u!1 &6448824472612537400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1055,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6448824471887485095}
+      - m_Target: {fileID: 8282152212379566753}
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
