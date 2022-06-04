@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.PlayerOption.Scripts.Model.Data.Properties;
+using System;
 using UnityEngine;
 
 namespace PlayerOption.Scripts.Model.Data
@@ -7,8 +8,9 @@ namespace PlayerOption.Scripts.Model.Data
     public class PlayerData
     {
         [SerializeField] private InventoryData _inventory;
-       
-        public int Hp;
+
+
+        public IntProperty Hp = new IntProperty(1);
 
         public InventoryData Inventory => _inventory;
 

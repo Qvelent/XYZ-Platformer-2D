@@ -62,7 +62,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          _session.Data.Inventory.OnChanged += OnInventoryChanged;
          _session.Data.Inventory.OnChanged += AnotherChanged;
          
-         _health.SetHealth(_session.Data.Hp);
+         _health.SetHealth(_session.Data.Hp.Value);
          UpdatePlayerWeapon();
       }
 
@@ -87,7 +87,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       public void OnHealthChange(int currentHealth)
       {
-         _session.Data.Hp = currentHealth;
+         _session.Data.Hp.Value = currentHealth;
       }
       
       protected override void Update()
