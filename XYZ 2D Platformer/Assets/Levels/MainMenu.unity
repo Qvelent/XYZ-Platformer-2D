@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 289735404}
   - component: {fileID: 289735403}
+  - component: {fileID: 289735405}
   m_Layer: 11
   m_Name: SfxAudioSource
   m_TagString: SfxAudioSource
@@ -249,6 +250,19 @@ Transform:
   m_Father: {fileID: 679669863}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &289735405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289735402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3cebabe4bf984f8c2faa654d18d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
 --- !u!1 &359814985
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811258299}
   - component: {fileID: 811258298}
+  - component: {fileID: 811258300}
   m_Layer: 11
   m_Name: MusicAudioSource
   m_TagString: Untagged
@@ -492,6 +507,19 @@ Transform:
   m_Father: {fileID: 679669863}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &811258300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811258297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3cebabe4bf984f8c2faa654d18d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 0
 --- !u!224 &1363649337 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8068198287388608351, guid: 1ea472e33963070428e1c792db003211,
