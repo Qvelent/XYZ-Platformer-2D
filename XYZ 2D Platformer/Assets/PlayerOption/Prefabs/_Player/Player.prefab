@@ -165,7 +165,7 @@ MonoBehaviour:
   _radius: 0.3
   _mask:
     serializedVersion: 2
-    m_Bits: 14135
+    m_Bits: 8449
   _tags:
   - Enemy
   _onOverlap:
@@ -458,6 +458,8 @@ GameObject:
   - component: {fileID: 7328438779001454940}
   - component: {fileID: 1687810098}
   - component: {fileID: 1365019803}
+  - component: {fileID: 1130977995}
+  - component: {fileID: 1130977994}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -593,7 +595,7 @@ MonoBehaviour:
   _invertScale: 0
   _moveSpeed: 4
   _jumpSpeed: 12
-  _damageVelocity: 2
+  _damageVelocity: 5
   _graundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -612,8 +614,8 @@ MonoBehaviour:
   _superThrowParticles: 3
   _superThrowDelay: 0.2
   _dashCD:
-    _value: 0
-  _dashForce: 0
+    _value: 1
+  _dashForce: 5000
   _hitDrop: {fileID: 7934254691176513711}
 --- !u!114 &6108174305556305482
 MonoBehaviour:
@@ -745,18 +747,7 @@ MonoBehaviour:
     m_ActionId: 85a4cdef-baa9-496d-84e6-120289b9a571
     m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6108174305556305482}
-        m_MethodName: OnPauseMenu
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 3eac7425-d544-484d-8198-96707104446c
     m_ActionName: Player/PauseMenu[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
@@ -795,7 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31d3046705c9ab45b8836e2668ba90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 0
+  _maxHealth: 20
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -808,17 +799,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Hit
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6108174305556305487}
-        m_MethodName: DealDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6108174305556305484}
@@ -943,6 +923,117 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: a83da4dad82096f42b31024816a56436, type: 3}
   - _id: Range
     _clip: {fileID: 8300000, guid: 7054ea80a8eb7544eb53693e982df6d6, type: 3}
+  - _id: Dash
+    _clip: {fileID: 8300000, guid: 85efbf558ade97f46a4581558505025f, type: 3}
+--- !u!82 &1130977995
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108174305556305478}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1130977994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108174305556305478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3cebabe4bf984f8c2faa654d18d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
 --- !u!1 &6108174305646824292
 GameObject:
   m_ObjectHideFlags: 0

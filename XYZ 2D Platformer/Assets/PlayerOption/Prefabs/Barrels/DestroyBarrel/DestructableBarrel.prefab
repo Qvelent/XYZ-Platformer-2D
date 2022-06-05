@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8948193625407676448}
   - component: {fileID: 648143406}
   - component: {fileID: 648143407}
+  - component: {fileID: 971415984322695235}
   m_Layer: 8
   m_Name: DestructableBarrel
   m_TagString: Enemy
@@ -528,6 +529,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &971415984322695235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626426030575926716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3cebabe4bf984f8c2faa654d18d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
 --- !u!1 &932115826464232034
 GameObject:
   m_ObjectHideFlags: 0

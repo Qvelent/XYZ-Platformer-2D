@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 85525010309930351}
   - component: {fileID: 3553014102035997892}
   - component: {fileID: -1822380500527878692}
+  - component: {fileID: 802122599804901942}
   m_Layer: 14
   m_Name: GoldCoin
   m_TagString: Coin
@@ -244,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frequency: 2
   _amplitude: 0.1
-  _randomize: 1
+  _randomize: 0
 --- !u!50 &85525010309930351
 Rigidbody2D:
   serializedVersion: 4
@@ -377,3 +378,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &802122599804901942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270903477257657224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3cebabe4bf984f8c2faa654d18d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1

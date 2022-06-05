@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1479085757}
   - component: {fileID: 1479085756}
   - component: {fileID: 652944349}
+  - component: {fileID: 3632105356083506891}
   m_Layer: 14
   m_Name: HealthPotion FullHP
   m_TagString: Untagged
@@ -379,3 +380,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3632105356083506891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212482055470881384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3cebabe4bf984f8c2faa654d18d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1

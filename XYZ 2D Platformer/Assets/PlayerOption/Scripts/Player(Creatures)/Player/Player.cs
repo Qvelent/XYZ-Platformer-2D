@@ -244,9 +244,8 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          
          if (PotionCount > 0)
          {
-            _health.ModifyHealth(100);
+            _health.ModifyHealth(20);
             _session.Data.Inventory.Remove("Potion(100)", 1);
-           
          }
       }
 
