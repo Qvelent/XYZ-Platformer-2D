@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlayerOption.Scripts.Utils;
+using UnityEngine;
 
 namespace PlayerOption.Scripts.Components.GoBased
 {
@@ -11,7 +12,7 @@ namespace PlayerOption.Scripts.Components.GoBased
         [ContextMenu("Spawn")]
         public void Spawn()
         {
-            var instantiate = Instantiate(_prefab, _target.position, Quaternion.identity); // Quaternion.identity поворот префаба
+            var instantiate = SpawnUtils.Spawn(_prefab, _target.position); // Quaternion.identity поворот префаба
             
             var scale = _target.lossyScale;
             scale.x *= _invertXScale ? -1 : 1;
