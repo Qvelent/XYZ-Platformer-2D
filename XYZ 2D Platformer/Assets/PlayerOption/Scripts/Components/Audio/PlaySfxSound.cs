@@ -1,7 +1,7 @@
-﻿using PlayerOption.Scripts.Audio;
+﻿using PlayerOption.Scripts.Utils;
 using UnityEngine;
 
-namespace Assets.PlayerOption.Scripts.Audio
+namespace PlayerOption.Scripts.Components.Audio
 {
     public class PlaySfxSound : MonoBehaviour
     {
@@ -11,8 +11,9 @@ namespace Assets.PlayerOption.Scripts.Audio
         public void Play()
         {
             if (_source == null)
-                _source = GameObject.FindWithTag
-                    (PlaySoundsComponent.SfxSourceTag).GetComponent<AudioSource>();
+                _source = AudioUntils.FindSfxSource();
+            
+            _source.PlayOneShot(_clip);
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using PlayerOption.Scripts.Components.Audio;
+using PlayerOption.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.PlayerOption.Scripts.UI.Widgets
+namespace PlayerOption.Scripts.UI.Widgets
 {
     public class ButtomSound : MonoBehaviour, IPointerClickHandler
     {
@@ -10,8 +11,8 @@ namespace Assets.PlayerOption.Scripts.UI.Widgets
         private AudioSource _source;
         public void OnPointerClick(PointerEventData eventData)
         {
-            if(_source == null)
-            _source = GameObject.FindWithTag("SfxAudioSource").GetComponent<AudioSource>();
+            if (_source == null)
+                _source = AudioUntils.FindSfxSource();
 
             _source.PlayOneShot(_audioClip);
         }

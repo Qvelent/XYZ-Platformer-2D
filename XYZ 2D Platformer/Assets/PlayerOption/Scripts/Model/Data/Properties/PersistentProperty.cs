@@ -1,28 +1,19 @@
 ﻿using System;
-using UnityEngine;
 
-namespace Assets.PlayerOption.Scripts.Model.Data.Properties
+namespace PlayerOption.Scripts.Model.Data.Properties
 {
-    [Serializable]
-    public abstract class PersistentProperty<TPropertyType> // abstract class означает, что у него будет абстрактные члены.
+    public abstract class PersistentProperty<TPropertyType> : ObservableProperty<TPropertyType>// abstract class означает, что у него будет абстрактные члены.
     {
-        [SerializeField] protected TPropertyType _value;
-
-        private TPropertyType _defaultValue;
-
         protected TPropertyType _stored;
+        
+        private TPropertyType _defaultValue;
 
         public PersistentProperty(TPropertyType defaultValue)
         {
             _defaultValue = defaultValue;
         }
-
-        public delegate void OnPropertyChanged(TPropertyType newValue,
-                                                TPropertyType oldValue);
-
-        public event OnPropertyChanged OnChanged;
-
-        public TPropertyType Value
+        
+        public override TPropertyType Value
         {
             get => _stored;
             set
@@ -34,7 +25,7 @@ namespace Assets.PlayerOption.Scripts.Model.Data.Properties
                 Write(value);
                 _stored = _value = value;
 
-                OnChanged?.Invoke(value, oldValue);
+                InvokeChangedEvent(value, oldValue);
             }
         }
 

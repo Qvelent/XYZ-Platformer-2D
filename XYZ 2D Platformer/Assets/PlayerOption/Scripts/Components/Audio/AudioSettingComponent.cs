@@ -1,9 +1,9 @@
-﻿using Assets.PlayerOption.Scripts.Model.Data;
+﻿using System;
+using Assets.PlayerOption.Scripts.Model.Data;
 using Assets.PlayerOption.Scripts.Model.Data.Properties;
-using System;
 using UnityEngine;
 
-namespace Assets.PlayerOption.Scripts.Components.Audio
+namespace PlayerOption.Scripts.Components.Audio
 {
     [RequireComponent(typeof(AudioSource))]
     public class AudioSettingComponent : MonoBehaviour

@@ -1,13 +1,12 @@
 ﻿using System;
+using PlayerOption.Scripts.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace PlayerOption.Scripts.Audio
+namespace PlayerOption.Scripts.Components.Audio
 {
     public class PlaySoundsComponent : MonoBehaviour
     {
-        public const string SfxSourceTag = "SfxAudioSource";
-
         [SerializeField] private AudioSource _source;
         [SerializeField] private AudioData[] _sounds;
 
@@ -17,9 +16,9 @@ namespace PlayerOption.Scripts.Audio
             {
                 if (audioData.Id != id) continue;
 
-                if(_source == null)
-                    _source = GameObject.FindWithTag(SfxSourceTag).GetComponent<AudioSource>();
-                    _source.pitch = Random.Range(.9f, 1.1f);
+                if (_source == null)
+                    _source = AudioUntils.FindSfxSource();
+                _source.pitch = Random.Range(.9f, 1.1f);
                 
                 _source.PlayOneShot(audioData.Clip);
                 break;

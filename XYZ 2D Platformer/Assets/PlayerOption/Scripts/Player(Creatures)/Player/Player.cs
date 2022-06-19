@@ -108,6 +108,12 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          
          Animator.SetBool(IsOnWall, _isOnWall);
       }
+
+      protected override float CalculateXVelocity()
+      {
+         var modifier = _isDashing ? 10 : 1;
+         return base.CalculateXVelocity() * modifier;
+      }
       
       protected override float CalculateYVelocity()
       {
@@ -249,8 +255,12 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          }
       }
 
-      public void OnPlayerDash()
+      private bool _isDashing;
+      
+      public void OnPlayerDash(bool isDashing)
       {
+         _isDashing = isDashing;
+         
          if (!_dashCD.IsReady) return;
          
          _dashCD.Reset();

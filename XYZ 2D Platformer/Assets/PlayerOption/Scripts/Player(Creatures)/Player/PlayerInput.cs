@@ -54,9 +54,14 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
         public void OnDash(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.started)
             {
-                _player.OnPlayerDash();
+                _player.OnPlayerDash(true);
+            }
+
+            if (context.canceled)
+            {
+                _player.OnPlayerDash(false);
             }
         }
 

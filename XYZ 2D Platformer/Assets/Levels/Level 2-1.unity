@@ -2161,8 +2161,8 @@ Transform:
   m_LocalPosition: {x: -15.89, y: -0.625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 491996859}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &232639379 stripped
 Transform:
@@ -4528,6 +4528,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3879499303774177365}
+  - {fileID: 650827776}
+  - {fileID: 229845128}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6051,8 +6053,8 @@ Transform:
   m_LocalPosition: {x: -15.89, y: -0.625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 491996859}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &651507567 stripped
 Transform:
@@ -13038,18 +13040,6 @@ MonoBehaviour:
         Value: 9999
       - Id: Potion(100)
         Value: 5
-      - Id: 
-        Value: 0
-      - Id: 
-        Value: 0
-      - Id: 
-        Value: 0
-      - Id: 
-        Value: 0
-      - Id: 
-        Value: 0
-      - Id: 
-        Value: 0
     Hp:
       _value: 20
 --- !u!1001 &1711260573
@@ -17114,7 +17104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879499303666681573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.11557, y: 3.4899998, z: -6.0075493}
+  m_LocalPosition: {x: -12.117762, y: 3.4899998, z: -6.0075493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3879499303774177365}

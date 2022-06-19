@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using PlayerOption.Scripts.Model.Data.Properties;
 using UnityEngine;
 
 namespace Assets.PlayerOption.Scripts.Model.Data.Properties

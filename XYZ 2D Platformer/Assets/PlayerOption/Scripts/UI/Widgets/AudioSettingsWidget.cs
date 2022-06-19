@@ -1,8 +1,9 @@
 ﻿using Assets.PlayerOption.Scripts.Model.Data.Properties;
+using PlayerOption.Scripts.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.PlayerOption.Scripts.UI.Widgets
+namespace PlayerOption.Scripts.UI.Widgets
 {
     public class AudioSettingsWidget : MonoBehaviour
     {
@@ -11,9 +12,11 @@ namespace Assets.PlayerOption.Scripts.UI.Widgets
 
         private FloatPersistentProperty _model;
 
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+
         private void Start()
         {
-            _slider.onValueChanged.AddListener(OnSliderValueChanged);
+            _trash.Retain(_slider.onValueChanged.Subsribe(OnSliderValueChanged));
         }
 
         private void OnSliderValueChanged(float value)
@@ -24,7 +27,7 @@ namespace Assets.PlayerOption.Scripts.UI.Widgets
         public void SetModel(FloatPersistentProperty model)
         {
             _model = model;
-            model.OnChanged += OnValueChanged;
+            _trash.Retain(model.Subscribe(OnValueChanged));
             OnValueChanged(model.Value, model.Value);
         }
 
@@ -37,8 +40,7 @@ namespace Assets.PlayerOption.Scripts.UI.Widgets
 
         private void OnDestroy()
         {
-            _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
-            _model.OnChanged -= OnValueChanged;
+            _trash.Dispose();
         }
     }
 }

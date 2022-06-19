@@ -1,5 +1,6 @@
 ﻿using Assets.PlayerOption.Scripts.Model.Data;
 using Assets.PlayerOption.Scripts.UI.Widgets;
+using PlayerOption.Scripts.UI.Widgets;
 using UnityEngine;
 
 namespace PlayerOption.Scripts.UI.Settings

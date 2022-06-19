@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using PlayerOption.Scripts.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.PlayerOption.Scripts.UI.Hud.QuickInventary
+namespace PlayerOption.Scripts.UI.Hud.QuickInventary
 {
     public class InventoryItemWidget : MonoBehaviour
     {
@@ -10,6 +10,6 @@ namespace Assets.PlayerOption.Scripts.UI.Hud.QuickInventary
         [SerializeField] private GameObject _selection;
         [SerializeField] private Text _value;
 
-        //private readonly CompositeDisposable _trash = new CompositeDisposable();
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
     }
 }

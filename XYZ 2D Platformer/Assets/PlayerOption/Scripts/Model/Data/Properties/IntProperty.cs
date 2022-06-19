@@ -1,4 +1,5 @@
 ﻿using System;
+using PlayerOption.Scripts.Model.Data.Properties;
 
 namespace Assets.PlayerOption.Scripts.Model.Data.Properties
 {
