@@ -22,7 +22,7 @@ namespace PlayerOption.Scripts.Model.Data
             var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
             
-            if (itemDef.IsStacable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 AddToStack(id, value);
             }
@@ -34,9 +34,20 @@ namespace PlayerOption.Scripts.Model.Data
             OnChanged?.Invoke(id, Count(id));
         }
 
-        public InventoryItemData[] GetAll()
+        public InventoryItemData[] GetAll(params ItemTag[] tags)
         {
-            return _inventory.ToArray();
+            var retValue = new List<InventoryItemData>();
+            foreach (var item in _inventory)
+            {
+                var itemDef = DefsFacade.I.Items.Get(item.Id);
+                var isAllRequirementsMet = tags.All(x => itemDef.HasTag(x));
+                if (isAllRequirementsMet)
+                {
+                    retValue.Add(item);
+                }
+            }
+
+            return retValue.ToArray();
         } 
 
         private void AddToStack(string id, int value)
@@ -72,7 +83,7 @@ namespace PlayerOption.Scripts.Model.Data
             var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
 
-            if (itemDef.IsStacable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 RemoveFromStack(id,value);
             }

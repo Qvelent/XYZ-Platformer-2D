@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace PlayerOption.Scripts.Model.Definitions
@@ -31,10 +32,16 @@ namespace PlayerOption.Scripts.Model.Definitions
     public struct ItemDef
     {
         [SerializeField] private string _id; // constructor c# изучить
-        [SerializeField] private bool _isStackable;
+        [SerializeField] private Sprite _icon;
+        [SerializeField] private ItemTag[] _tags;
+        
         public string Id => _id;
-        public bool IsStacable => _isStackable; 
-
         public bool IsVoid => string.IsNullOrEmpty(_id);
+        public Sprite Icon => _icon;
+
+        public bool HasTag(ItemTag tag)
+        {
+            return _tags.Contains(tag);
+        }
     }
 }

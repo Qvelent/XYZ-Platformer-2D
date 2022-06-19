@@ -13033,13 +13033,11 @@ MonoBehaviour:
     _inventory:
       _inventory:
       - Id: Coin
-        Value: 9999
+        Value: 1
       - Id: Sword
-        Value: 9999
+        Value: 6
       - Id: Key
-        Value: 9999
-      - Id: Potion(100)
-        Value: 5
+        Value: 1
     Hp:
       _value: 20
 --- !u!1001 &1711260573
@@ -17104,7 +17102,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879499303666681573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.117762, y: 3.4899998, z: -6.0075493}
+  m_LocalPosition: {x: -12.1093445, y: 3.4899998, z: -6.0075493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3879499303774177365}

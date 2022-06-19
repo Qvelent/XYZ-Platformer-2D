@@ -289,13 +289,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 603861746}
+  - component: {fileID: 603861747}
   m_Layer: 5
   m_Name: item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &603861746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -313,11 +314,26 @@ RectTransform:
   m_Father: {fileID: 621266014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10.5, y: -12.5}
   m_SizeDelta: {x: 13, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &603861747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603861745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1915947c5e1cc347901e6e11d62886a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 1491764945}
+  _selection: {fileID: 1595205499}
+  _value: {fileID: 965860598}
 --- !u!1 &621266013
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +953,7 @@ GameObject:
   - component: {fileID: 1035655244}
   - component: {fileID: 1035655246}
   - component: {fileID: 1035655245}
+  - component: {fileID: 1035655247}
   m_Layer: 5
   m_Name: QuickInventory
   m_TagString: Untagged
@@ -1001,6 +1018,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035655243}
   m_CullTransparentMesh: 0
+--- !u!114 &1035655247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035655243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8745e2156c7c15240b0fdaab4aa1cc63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 621266014}
+  _prefab: {fileID: 603861747}
 --- !u!1 &1152151376
 GameObject:
   m_ObjectHideFlags: 0
