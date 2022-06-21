@@ -3,6 +3,7 @@ using PlayerOption.Scripts.Components.ColliderBased;
 using PlayerOption.Scripts.Components.GoBased;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Model;
+using PlayerOption.Scripts.Model.Definitions;
 using PlayerOption.Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       [SerializeField] private CoolDown _superThrowCD;
       [SerializeField] private int _superThrowParticles;
       [SerializeField] private float _superThrowDelay;
+      [SerializeField] private SpawnComponent _throwSpawner;
 
       [SerializeField] private CoolDown _dashCD;
       [SerializeField] private float _dashForce;
@@ -41,9 +43,24 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private PauseMenuController _pauseMenu;
       private float _defaultGravityScale;
 
+      private const string SwordId = "Sword";
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
-      private int SwordCount => _session.Data.Inventory.Count("Sword"); // property c# изучить
+      private int SwordCount => _session.Data.Inventory.Count(SwordId); // property c# изучить
       private int PotionCount => _session.Data.Inventory.Count("Potion(100)"); // property c# изучить
+
+      private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
+
+      private bool CanThrow
+      {
+         get
+         {
+            if (SelectedItemId == SwordId)
+               return SwordCount > 1;
+
+            var def = DefsFacade.I.Items.Get(_session.QuickInventory.SelectedItem.Id);
+            return def.HasTag(ItemTag.Throwable);
+         }
+      }
       
 
 
@@ -79,7 +96,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       private void OnInventoryChanged(string id, int value)
       {
-         if (id == "Sword")
+         if (id == SwordId)
          {
             UpdatePlayerWeapon();
          }
@@ -169,12 +186,10 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       private void OnCollisionEnter2D(Collision2D other)
       {
-         if (other.gameObject.IsInLayer(_graundLayer))
-         {
-            var contact = other.contacts[0];
-            if (!(contact.relativeVelocity.y >= _slamDownVelocity)) return;
-            _particles.Spawn("SlamDown");
-         }
+         if (!other.gameObject.IsInLayer(_graundLayer)) return;
+         var contact = other.contacts[0];
+         if (!(contact.relativeVelocity.y >= _slamDownVelocity)) return;
+         _particles.Spawn("SlamDown");
       }
 
       public void SwordAttack()
@@ -199,7 +214,10 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       {
          if (_isSuperThrow)
          {
-            var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+            var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
+            var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+            
+            var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
             StartCoroutine(DoSuperThrow(numThrows));
          }
          else
@@ -222,8 +240,13 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       private void ThrowAndRemoveFromInventory()
       {
          Sounds.Play("Range");
-         _particles.Spawn("Throw");
-         _session.Data.Inventory.Remove("Sword", 1);
+
+         var throwableId = _session.QuickInventory.SelectedItem.Id;
+         var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
+         _throwSpawner.SetPrefab(throwableDef.Projectile);
+         _throwSpawner.Spawn();
+         
+         _session.Data.Inventory.Remove(throwableId, 1);
       }
 
       public void StartThrowing()
@@ -233,7 +256,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       public void StopThrowing()
       {
-         if(!_throwCD.IsReady || SwordCount <= 1) return;
+         if(!_throwCD.IsReady || !CanThrow) return;
 
          if (_superThrowCD.IsReady) _isSuperThrow = true;
          
@@ -286,6 +309,11 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       public void OnOpenPauseMenu()
       {
          _pauseMenu.PauseUnPause();
+      }
+
+      public void NextItem()
+      {
+         _session.QuickInventory.SetNextItem();
       }
    }
 }

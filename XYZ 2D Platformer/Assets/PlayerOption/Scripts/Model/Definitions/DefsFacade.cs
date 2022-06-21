@@ -6,9 +6,12 @@ namespace PlayerOption.Scripts.Model.Definitions
     public class DefsFacade : ScriptableObject // singleton c# изучить
     {
         [SerializeField] private InventoryItemsDef _items;
+        [SerializeField] private ThrowableItemsDef _throwableItems;
         [SerializeField] private PlayerDef _player;
 
         public InventoryItemsDef Items => _items;
+
+        public ThrowableItemsDef Throwable => _throwableItems;
         public PlayerDef Player => _player;
 
         private static DefsFacade _instance;

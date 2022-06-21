@@ -11132,11 +11132,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6108174305556305487, guid: 46b7f00ae5d5b4043aee008cbed28896,
-        type: 3}
-      propertyPath: _maxHealth
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b7f00ae5d5b4043aee008cbed28896, type: 3}
 --- !u!95 &1365019800 stripped
@@ -13032,12 +13027,8 @@ MonoBehaviour:
   _data:
     _inventory:
       _inventory:
-      - Id: Coin
-        Value: 1
-      - Id: Sword
-        Value: 6
-      - Id: Key
-        Value: 1
+      - Id: PearlProjectile
+        Value: 10
     Hp:
       _value: 20
 --- !u!1001 &1711260573
@@ -17102,7 +17093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879499303666681573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.1093445, y: 3.4899998, z: -6.0075493}
+  m_LocalPosition: {x: -12.11344, y: 3.4899998, z: -6.0075493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3879499303774177365}

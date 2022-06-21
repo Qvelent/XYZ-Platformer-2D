@@ -16,6 +16,8 @@ namespace PlayerOption.Scripts.Model.Data
 
         public event Action OnChanged;
 
+        public InventoryItemData SelectedItem => Inventory[SelectedIndex.Value];
+
         public QuickInventoryModel(PlayerData data)
         {
             _data = data;
@@ -37,6 +39,11 @@ namespace PlayerOption.Scripts.Model.Data
             Inventory = _data.Inventory.GetAll(ItemTag.Usable);
             SelectedIndex.Value = Mathf.Clamp(SelectedIndex.Value, 0, Inventory.Length - 1);
             OnChanged?.Invoke();
+        }
+
+        public void SetNextItem()
+        {
+            SelectedIndex.Value = (int) Mathf.Repeat(SelectedIndex.Value + 1, Inventory.Length);
         }
     }
 }

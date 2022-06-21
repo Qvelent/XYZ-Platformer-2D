@@ -19,5 +19,10 @@ namespace PlayerOption.Scripts.Components.GoBased
             instantiate.transform.localScale = scale;
             instantiate.SetActive(true);
         }
+
+        public void SetPrefab(GameObject ptefab)
+        {
+            _prefab = ptefab;
+        }
     }
 }
