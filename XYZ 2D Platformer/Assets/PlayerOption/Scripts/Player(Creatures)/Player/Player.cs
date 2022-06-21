@@ -260,12 +260,9 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
          if (_superThrowCD.IsReady) _isSuperThrow = true;
          
-         _throwCD.Reset();
-         
-         if (SwordCount <= 1) return;
-         
          Animator.SetTrigger(ThrowKey);
          
+          _throwCD.Reset();
       }
       
       public void OnUsePotion()
