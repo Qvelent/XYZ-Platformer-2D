@@ -1,9 +1,10 @@
 ﻿using Assets.PlayerOption.Scripts.UI.Widgets;
 using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Model.Definitions;
+using PlayerOption.Scripts.Utils;
 using UnityEngine;
 
-namespace Assets.PlayerOption.Scripts.UI.Hud
+namespace PlayerOption.Scripts.UI.Hud
 {
     public class HudController : MonoBehaviour
     {
@@ -23,6 +24,11 @@ namespace Assets.PlayerOption.Scripts.UI.Hud
             var maxHealth = DefsFacade.I.Player.MaxHealth;
             var value = (float)newValue / maxHealth;
             _healthBar.SetProgress(value);
+        }
+
+        public void OnSetting()
+        {
+            WindowUntils.CreateWindow("UI/PauseMenuWindow");
         }
 
         private void OnDestroy()

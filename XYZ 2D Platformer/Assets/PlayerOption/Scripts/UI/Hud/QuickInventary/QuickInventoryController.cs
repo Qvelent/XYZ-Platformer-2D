@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using PlayerOption.Scripts.Model;
-using PlayerOption.Scripts.Model.Data;
 using PlayerOption.Scripts.Utils.Disposables;
 using UnityEngine;
 

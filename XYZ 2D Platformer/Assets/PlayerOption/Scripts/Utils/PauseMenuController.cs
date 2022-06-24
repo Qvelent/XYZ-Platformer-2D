@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using PlayerOption.Scripts.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,8 @@ namespace PlayerOption.Scripts.Utils
         [SerializeField] private string _sceneName,_mainMenu;
         [SerializeField] private GameObject _pauseScreen;
 
+        private float _defaultTimeScale;
+
         public bool _isPaused;
 
         public static PauseMenuController instance;
@@ -19,7 +22,20 @@ namespace PlayerOption.Scripts.Utils
         {
             instance = this;
         }
-        
+
+        protected override void Start()
+        {
+            base.Start();
+
+            _defaultTimeScale = Time.timeScale;
+            Time.timeScale = 0;
+        }
+
+        private void OnDestroy()
+        {
+            Time.timeScale = _defaultTimeScale;
+        }
+
         public void PauseUnPause()
         {
             if (_isPaused)
@@ -45,9 +61,7 @@ namespace PlayerOption.Scripts.Utils
         
         public void OnShowSetting()
         {
-            var window = Resources.Load<GameObject>("UI/SettingsWindow");
-            var canvas = FindObjectOfType<Canvas>();
-            Instantiate(window, canvas.transform);
+            WindowUntils.CreateWindow("UI/SettingsWindow");
         }
 
         public void EndLevel()
