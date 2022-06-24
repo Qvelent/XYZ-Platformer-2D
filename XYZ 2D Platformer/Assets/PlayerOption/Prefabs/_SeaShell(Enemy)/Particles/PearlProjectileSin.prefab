@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1d8e597b090ab498fa202985cffa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Enemy
+  _tag: 
   _layer:
     serializedVersion: 2
-    m_Bits: 12544
+    m_Bits: 6400
   _action:
     m_PersistentCalls:
       m_Calls:

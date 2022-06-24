@@ -9,9 +9,11 @@ namespace PlayerOption.Scripts.Components.Health
         [SerializeField] private int _maxHealth;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onHealing;
-        [SerializeField] private UnityEvent _onDie;
-        [SerializeField] private HealthChangeEvent _onChange;
+        [SerializeField] public UnityEvent _onDie;
+        [SerializeField] public HealthChangeEvent _onChange;
         [SerializeField] private float invincibleLength = 0.1f;
+
+        public int Health => _maxHealth;
         
         private float _invincibleCounter;
 
