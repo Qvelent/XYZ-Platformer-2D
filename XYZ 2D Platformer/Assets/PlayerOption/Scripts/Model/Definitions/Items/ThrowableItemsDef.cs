@@ -5,7 +5,6 @@ namespace PlayerOption.Scripts.Model.Definitions
 {
     [CreateAssetMenu(menuName = "Defs/ThrowableItemsDef", fileName = "ThrowableItemsDef")]
     public class ThrowableItemsDef : ScriptableObject
-
     {
         [SerializeField] private ThrowableDef[] _items;
 

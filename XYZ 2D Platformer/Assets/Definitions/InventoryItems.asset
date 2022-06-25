@@ -29,12 +29,12 @@ MonoBehaviour:
   - _id: Potion(40)
     _icon: {fileID: -8438763151253471919, guid: 8b13524bed6c0904883dd098cd81e6ed,
       type: 3}
-    _tags: 0100000000000000
+    _tags: 030000000100000000000000
   - _id: Potion(20)
     _icon: {fileID: -6202940564662568092, guid: 8b13524bed6c0904883dd098cd81e6ed,
       type: 3}
-    _tags: 0100000000000000
+    _tags: 030000000100000000000000
   - _id: Potion(10)
     _icon: {fileID: -3065595510956808684, guid: 8b13524bed6c0904883dd098cd81e6ed,
       type: 3}
-    _tags: 0100000000000000
+    _tags: 030000000100000000000000

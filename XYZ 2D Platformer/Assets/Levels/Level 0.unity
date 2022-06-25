@@ -4305,7 +4305,7 @@ PrefabInstance:
     - target: {fileID: 2303471262584813027, guid: 452187b41987034499ef6cb9e6e37749,
         type: 3}
       propertyPath: _id
-      value: 
+      value: Potion(10)
       objectReference: {fileID: 0}
     - target: {fileID: 3766612549251034859, guid: 452187b41987034499ef6cb9e6e37749,
         type: 3}
@@ -4423,10 +4423,10 @@ MonoBehaviour:
       _inventory:
       - Id: Potion(40)
         Value: 1
-      - Id: Potion(20)
-        Value: 1
-      - Id: Potion(10)
-        Value: 1
+      - Id: Sword
+        Value: 10
+      - Id: PearlProjectile
+        Value: 10
     Hp:
       _value: 20
 --- !u!4 &1731718336 stripped
@@ -4877,11 +4877,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 629556789}
     m_Modifications:
-    - target: {fileID: 1400174271298978890, guid: 007f3b489575c9e43a2c2b6a9ab3f7a5,
-        type: 3}
-      propertyPath: _id
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5525877255016638026, guid: 007f3b489575c9e43a2c2b6a9ab3f7a5,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using PlayerOption.Scripts.Components.ColliderBased;
 using PlayerOption.Scripts.Components.GoBased;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Model.Definitions;
+using PlayerOption.Scripts.Model.Definitions.Items;
 using PlayerOption.Scripts.Utils;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -14,39 +16,34 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
    {
       [SerializeField] private ColliderCheck _wallCheck;
       [SerializeField] private CheckCircleOverLap _interactionCheck;
-      
+
       [SerializeField] private float _slamDownVelocity;
       [SerializeField] private CoolDown _throwCD;
       [SerializeField] private AnimatorController _armed;
       [SerializeField] private AnimatorController _disarmed;
-      
+
       [SerializeField] private CoolDown _superThrowCD;
       [SerializeField] private int _superThrowParticles;
       [SerializeField] private float _superThrowDelay;
       [SerializeField] private SpawnComponent _throwSpawner;
 
-      [SerializeField] private CoolDown _dashCD;
-      [SerializeField] private float _dashForce;
-
       [SerializeField] private ProbabilityDropComponent _hitDrop;
-      
+
       private SpriteRenderer _playerSr;
       private static readonly int ThrowKey = Animator.StringToHash("throw");
       private static readonly int IsOnWall = Animator.StringToHash("is-on-wall");
-      
+
       private bool _isDoubleJump;
       private bool _isOnWall;
       private bool _isSuperThrow;
 
       private GameSession _session;
       private HealthComponent _health;
-      private PauseMenuController _pauseMenu;
       private float _defaultGravityScale;
 
       private const string SwordId = "Sword";
       private int CoinsCount => _session.Data.Inventory.Count("Coin"); // property c# изучить
       private int SwordCount => _session.Data.Inventory.Count(SwordId); // property c# изучить
-      private int PotionCount => _session.Data.Inventory.Count("Potion(100)"); // property c# изучить
 
       private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
 
@@ -61,24 +58,23 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
             return def.HasTag(ItemTag.Throwable);
          }
       }
-      
+
 
 
       protected override void Awake()
       {
          base.Awake();
-         
+
          _defaultGravityScale = Rigidbody.gravityScale;
       }
-      
+
       private void Start()
       {
          _session = FindObjectOfType<GameSession>();
          _health = GetComponent<HealthComponent>();
-         _pauseMenu = GetComponent<PauseMenuController>();
          _session.Data.Inventory.OnChanged += OnInventoryChanged;
          _session.Data.Inventory.OnChanged += AnotherChanged;
-         
+
          _health.SetHealth(_session.Data.Hp.Value);
          UpdatePlayerWeapon();
       }
@@ -106,11 +102,11 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
       {
          _session.Data.Hp.Value = currentHealth;
       }
-      
+
       protected override void Update()
       {
          base.Update();
-         
+
          var moveToSameDirection = Direction.x * transform.lossyScale.x > 0;
          if (_wallCheck.IsTouchingLayer && moveToSameDirection)
          {
@@ -122,16 +118,10 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
             _isOnWall = false;
             Rigidbody.gravityScale = _defaultGravityScale;
          }
-         
+
          Animator.SetBool(IsOnWall, _isOnWall);
       }
 
-      protected override float CalculateXVelocity()
-      {
-         var modifier = _isDashing ? 10 : 1;
-         return base.CalculateXVelocity() * modifier;
-      }
-      
       protected override float CalculateYVelocity()
       {
          var isJumpingPressing = Direction.y > 0;
@@ -142,20 +132,20 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          }
 
          if (!isJumpingPressing && _isOnWall) return 0f;
-         
+
          return base.CalculateYVelocity();
       }
 
       protected override float CalculateJumpVelocity(float yVelocity)
       {
-        if (!IsGrounded && _isDoubleJump && !_isOnWall)
-        {
-           _isDoubleJump = false;
-           DoJumpVfx();
-           return _jumpSpeed;
-        }
+         if (!IsGrounded && _isDoubleJump && !_isOnWall)
+         {
+            _isDoubleJump = false;
+            DoJumpVfx();
+            return _jumpSpeed;
+         }
 
-        return base.CalculateJumpVelocity(yVelocity);
+         return base.CalculateJumpVelocity(yVelocity);
       }
 
       public void AddInInventory(string id, int value)
@@ -197,11 +187,11 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          _particles.Spawn("Attack");
       }
 
-      
+
       public override void Attack()
       {
          if (SwordCount <= 0) return;
-         
+
          base.Attack();
       }
 
@@ -216,7 +206,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          {
             var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
             var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
-            
+
             var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
             StartCoroutine(DoSuperThrow(numThrows));
          }
@@ -245,7 +235,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
          _throwSpawner.SetPrefab(throwableDef.Projectile);
          _throwSpawner.Spawn();
-         
+
          _session.Data.Inventory.Remove(throwableId, 1);
       }
 
@@ -256,67 +246,45 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
 
       public void StopThrowing()
       {
-         if(!_throwCD.IsReady || !CanThrow) return;
+         if (!_throwCD.IsReady || !CanThrow) return;
 
          if (_superThrowCD.IsReady) _isSuperThrow = true;
-         
+
          Animator.SetTrigger(ThrowKey);
-         
-          _throwCD.Reset();
+
+         _throwCD.Reset();
       }
 
-      private void UsePotionAndRemoveFromInventory()
+      public void UseInventory()
       {
-         var UsePotionId = _session.QuickInventory.SelectedItem.Id;
-         var UsePotionDef = DefsFacade.I.UsePotion.Get(UsePotionId);
-         _health._onChange.Invoke(UsePotionDef.GetHashCode()); // --------------
-         _session.Data.Inventory.Remove(UsePotionId, 1);
+        if (IsSelectedItem(ItemTag.Potion))
+            UsePotion();
       }
-      
-      public void OnUsePotion()
+
+      private void UsePotion()
       {
-         if (PotionCount <= 0) return;
-         _health.ModifyHealth(20);
-         _session.Data.Inventory.Remove("Potion(40)", 1);
-      }
-      
-      private bool _isDashing;
-      
-      public void OnPlayerDash(bool isDashing)
-      {
-         _isDashing = isDashing;
-         
-         if (!_dashCD.IsReady) return;
-         
-         _dashCD.Reset();
-         
-         switch (transform.localScale.x)
+         var potion = DefsFacade.I.Potions.Get(SelectedItemId);
+
+         switch (potion.Effect)
          {
-            case -1:
-               Rigidbody.AddForce(Vector2.left * _dashForce);
-               DashSound();
-               break;
-            case 1:
-               Rigidbody.AddForce(Vector2.right * _dashForce);
-               DashSound();
+            case Effect.AddHp:
+               _session.Data.Hp.Value += (int) potion.Value;
                break;
          }
+
+         _session.Data.Inventory.Remove(potion.Id, 1);
+         
       }
 
-      private void DashSound()
-      {
-         Sounds.Play("Dash");
-      }
-
-      public void OnOpenPauseMenu()
-      {
-         _pauseMenu.PauseUnPause();
-      }
-
-      public void NextItem()
-      {
-         _session.QuickInventory.SetNextItem();
-      }
+      private bool IsSelectedItem(ItemTag tag)
+         {
+            return _session.QuickInventory.SelectedDef.HasTag(tag);
+         }
+      
+         public void NextItem()
+         {
+            _session.QuickInventory.SetNextItem();
+         }
    }
 }
 

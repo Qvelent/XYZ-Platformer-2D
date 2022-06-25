@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9c4ceb918d49af875a65d78d2a0b25, type: 3}
   m_Name: UsePotionDef
   m_EditorClassIdentifier: 
-  _items:
+  _collection:
   - _id: Potion(40)
-    _potions: {fileID: 8212482055470881384, guid: 8a9c0433aa8310e49b6b05052fe69084,
-      type: 3}
+    _effect: 0
+    _value: 40
   - _id: Potion(20)
-    _potions: {fileID: 5525877255016638030, guid: 007f3b489575c9e43a2c2b6a9ab3f7a5,
-      type: 3}
+    _effect: 0
+    _value: 20
   - _id: Potion(10)
-    _potions: {fileID: 3766612549251034863, guid: 452187b41987034499ef6cb9e6e37749,
-      type: 3}
+    _effect: 0
+    _value: 10

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using PlayerOption.Scripts.Model.Data;
+using PlayerOption.Scripts.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +12,11 @@ namespace PlayerOption.Scripts.Model
         [SerializeField] private PlayerData _data;
         public PlayerData Data => _data;
         private PlayerData _save;
+        
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
         public QuickInventoryModel QuickInventory { get; private set; }
+        
+        
         
         private void Awake()
         {
@@ -32,7 +36,7 @@ namespace PlayerOption.Scripts.Model
 
         private void InitModels()
         {
-            QuickInventory = new QuickInventoryModel(Data);
+            QuickInventory = new QuickInventoryModel(_data);
         }
 
         private void LoadHud()

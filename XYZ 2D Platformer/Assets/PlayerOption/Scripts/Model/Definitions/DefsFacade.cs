@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlayerOption.Scripts.Model.Definitions.Items;
+using UnityEngine;
 
 namespace PlayerOption.Scripts.Model.Definitions
 {
@@ -7,13 +8,13 @@ namespace PlayerOption.Scripts.Model.Definitions
     {
         [SerializeField] private InventoryItemsDef _items;
         [SerializeField] private ThrowableItemsDef _throwableItems;
-        [SerializeField] private UsePotionItemDef _usePotionItem;
+        [SerializeField] private UsePotionItemDef _potions;
         [SerializeField] private PlayerDef _player;
 
         public InventoryItemsDef Items => _items;
 
         public ThrowableItemsDef Throwable => _throwableItems;
-        public UsePotionItemDef UsePotion => _usePotionItem;
+        public UsePotionItemDef Potions => _potions;
         public PlayerDef Player => _player;
 
         private static DefsFacade _instance;

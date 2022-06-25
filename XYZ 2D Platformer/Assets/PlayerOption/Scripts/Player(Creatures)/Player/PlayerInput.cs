@@ -48,7 +48,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
         {
             if (context.performed)
             {
-                _player.OnUsePotion();
+                _player.UseInventory();
             }
         }
         
@@ -57,27 +57,6 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
             if (context.performed)
             {
                 _player.NextItem();
-            }
-        }
-
-        public void OnDash(InputAction.CallbackContext context)
-        {
-            if (context.started)
-            {
-                _player.OnPlayerDash(true);
-            }
-
-            if (context.canceled)
-            {
-                _player.OnPlayerDash(false);
-            }
-        }
-
-        public void OnPauseMenu(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                _player.OnOpenPauseMenu();
             }
         }
     }
