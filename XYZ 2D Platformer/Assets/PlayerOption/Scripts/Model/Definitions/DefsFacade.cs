@@ -7,11 +7,13 @@ namespace PlayerOption.Scripts.Model.Definitions
     {
         [SerializeField] private InventoryItemsDef _items;
         [SerializeField] private ThrowableItemsDef _throwableItems;
+        [SerializeField] private UsePotionItemDef _usePotionItem;
         [SerializeField] private PlayerDef _player;
 
         public InventoryItemsDef Items => _items;
 
         public ThrowableItemsDef Throwable => _throwableItems;
+        public UsePotionItemDef UsePotion => _usePotionItem;
         public PlayerDef Player => _player;
 
         private static DefsFacade _instance;

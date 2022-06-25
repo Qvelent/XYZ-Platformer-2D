@@ -16,6 +16,7 @@ namespace PlayerOption.Scripts.Player_Creatures_.Mobs
         [SerializeField] private float _missPlayerCooldown = 0.5f;
         
         [SerializeField] private float _horizontalTreshold = 0.2f;
+        
         //[SerializeField] private bool _isDoPatrol;
 
         private IEnumerator _current;

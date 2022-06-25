@@ -1,10 +1,7 @@
-﻿using System;
-using Assets.PlayerOption.Scripts.UI.Widgets;
+﻿using Assets.PlayerOption.Scripts.UI.Widgets;
 using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Utils.Disposables;
-using UnityEditor.UIElements;
 using UnityEngine;
-using Object = System.Object;
 
 namespace PlayerOption.Scripts.UI.Widgets
 {

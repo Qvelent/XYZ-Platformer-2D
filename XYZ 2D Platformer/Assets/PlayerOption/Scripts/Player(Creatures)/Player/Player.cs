@@ -264,17 +264,22 @@ namespace PlayerOption.Scripts.Player_Creatures_.Player
          
           _throwCD.Reset();
       }
+
+      private void UsePotionAndRemoveFromInventory()
+      {
+         var UsePotionId = _session.QuickInventory.SelectedItem.Id;
+         var UsePotionDef = DefsFacade.I.UsePotion.Get(UsePotionId);
+         _health._onChange.Invoke(UsePotionDef.GetHashCode()); // --------------
+         _session.Data.Inventory.Remove(UsePotionId, 1);
+      }
       
       public void OnUsePotion()
       {
-         
-         if (PotionCount > 0)
-         {
-            _health.ModifyHealth(20);
-            _session.Data.Inventory.Remove("Potion(100)", 1);
-         }
+         if (PotionCount <= 0) return;
+         _health.ModifyHealth(20);
+         _session.Data.Inventory.Remove("Potion(40)", 1);
       }
-
+      
       private bool _isDashing;
       
       public void OnPlayerDash(bool isDashing)

@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c8c7941b7e4f73bdb1fea29153ca45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Potion(100)
+  _id: Potion(40)
   _count: 1
 --- !u!50 &1479085757
 Rigidbody2D:
