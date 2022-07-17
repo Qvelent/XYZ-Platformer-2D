@@ -1,6 +1,6 @@
-﻿using Assets.PlayerOption.Scripts.UI.Widgets;
-using PlayerOption.Scripts.Model;
+﻿using PlayerOption.Scripts.Model;
 using PlayerOption.Scripts.Model.Definitions;
+using PlayerOption.Scripts.UI.Widgets;
 using PlayerOption.Scripts.Utils;
 using UnityEngine;
 

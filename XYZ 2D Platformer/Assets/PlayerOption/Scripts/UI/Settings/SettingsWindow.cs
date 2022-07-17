@@ -1,5 +1,4 @@
 ﻿using Assets.PlayerOption.Scripts.Model.Data;
-using Assets.PlayerOption.Scripts.UI.Widgets;
 using PlayerOption.Scripts.UI.Widgets;
 using UnityEngine;
 

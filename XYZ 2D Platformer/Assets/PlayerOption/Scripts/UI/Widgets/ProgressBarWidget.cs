@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.PlayerOption.Scripts.UI.Widgets
+namespace PlayerOption.Scripts.UI.Widgets
 {
     public class ProgressBarWidget : MonoBehaviour
     {

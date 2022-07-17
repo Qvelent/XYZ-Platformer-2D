@@ -1,5 +1,4 @@
-﻿using Assets.PlayerOption.Scripts.UI.Widgets;
-using PlayerOption.Scripts.Components.Health;
+﻿using PlayerOption.Scripts.Components.Health;
 using PlayerOption.Scripts.Utils.Disposables;
 using UnityEngine;
 
