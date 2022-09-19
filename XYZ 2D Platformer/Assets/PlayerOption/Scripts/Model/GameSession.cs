@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using PlayerOption.Scripts.Model.Data;
 using PlayerOption.Scripts.Utils.Disposables;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,8 +14,8 @@ namespace PlayerOption.Scripts.Model
         [SerializeField] private PlayerData _data;
         public PlayerData Data => _data;
         private PlayerData _save;
-        
         private readonly CompositeDisposable _trash = new CompositeDisposable();
+        
         public QuickInventoryModel QuickInventory { get; private set; }
         
         
@@ -37,6 +39,7 @@ namespace PlayerOption.Scripts.Model
         private void InitModels()
         {
             QuickInventory = new QuickInventoryModel(_data);
+            _trash.Retain(QuickInventory);
         }
 
         private void LoadHud()
@@ -53,6 +56,11 @@ namespace PlayerOption.Scripts.Model
                                                                      //         return true;
                                                                      // }
                                                                      // return false; 
+        }
+
+        private void OnDestroy()
+        {
+            _trash.Dispose();
         }
     }
 }

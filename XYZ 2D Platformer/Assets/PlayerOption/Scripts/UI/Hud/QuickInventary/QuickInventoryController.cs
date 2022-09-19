@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace PlayerOption.Scripts.UI.Hud.QuickInventary
 {
-    public class QuickInventoryController : MonoBehaviour
+    public class  QuickInventoryController : MonoBehaviour
     {
         [SerializeField] private Transform _container;
         [SerializeField] private InventoryItemWidget _prefab;
